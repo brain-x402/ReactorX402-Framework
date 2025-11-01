@@ -3,10 +3,33 @@ import { createServer, type Server } from "http";
 import { z } from "zod";
 import { chatRequestSchema, validateWalletSchema } from "@shared/schema";
 import { generateChatResponse } from "./services/mistral";
-import { validateWalletAddress, transferUSDC } from "./services/solana";
+import { validateWalletAddress, transferUSDC, getNetworkInfo, checkBalances } from "./services/solana";
+import { checkDailyLimit, checkWalletRateLimit, checkIpRateLimit, incrementDailyCount } from "./services/rateLimit";
 import type { ChatResponse, Message, Transaction } from "@shared/schema";
+import { formatUsdcAmount } from "@shared/network";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  app.get("/api/network-info", async (req, res) => {
+    try {
+      const networkInfo = getNetworkInfo();
+      const balances = await checkBalances();
+      const dailyLimit = checkDailyLimit();
+      
+      res.json({
+        ...networkInfo,
+        senderBalance: {
+          sol: balances.solBalance,
+          usdc: balances.usdcBalance,
+        },
+        dailyLimit: {
+          remaining: dailyLimit.remaining,
+        },
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to fetch network info" });
+    }
+  });
+
   app.post("/api/validate-wallet", async (req, res) => {
     try {
       const { address } = validateWalletSchema.parse(req.body);
@@ -25,6 +48,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { message, walletAddress, conversationHistory } = chatRequestSchema.parse(req.body);
 
+      const clientIp = req.ip || req.socket.remoteAddress || "unknown";
+      const ipCheck = checkIpRateLimit(clientIp);
+      if (!ipCheck.allowed) {
+        return res.status(429).json({ error: ipCheck.error });
+      }
+
+      const walletCheck = checkWalletRateLimit(walletAddress);
+      if (!walletCheck.allowed) {
+        return res.status(429).json({ error: walletCheck.error, waitTime: walletCheck.waitTime });
+      }
+
+      const dailyCheck = checkDailyLimit();
+      if (!dailyCheck.allowed) {
+        return res.status(429).json({ error: dailyCheck.error });
+      }
+
       const aiResponse = await generateChatResponse(message, conversationHistory || []);
 
       const assistantMessage: Message = {
@@ -38,15 +77,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       try {
         const transferResult = await transferUSDC(walletAddress);
+        const networkInfo = getNetworkInfo();
+        const transferAmountUsdc = networkInfo.transferAmount;
+        
+        if (transferResult.errorType === "insufficient_funds") {
+          return res.status(402).json({ 
+            error: transferResult.error 
+          });
+        }
         
         transaction = {
           signature: transferResult.signature,
-          amount: 0.001,
+          amount: transferAmountUsdc,
           recipient: walletAddress,
           timestamp: Date.now(),
           status: transferResult.status,
           error: transferResult.error,
+          explorerUrl: transferResult.explorerUrl,
         };
+        
+        if (transferResult.status === "success") {
+          incrementDailyCount();
+        }
       } catch (error: any) {
         console.error("Transaction error:", error);
         
@@ -56,9 +108,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
           });
         }
         
+        const networkInfo = getNetworkInfo();
         transaction = {
           signature: "",
-          amount: 0.001,
+          amount: networkInfo.transferAmount,
           recipient: walletAddress,
           timestamp: Date.now(),
           status: "failed",

@@ -4,6 +4,7 @@ import {
   Keypair,
   Transaction,
   sendAndConfirmTransaction,
+  LAMPORTS_PER_SOL,
 } from "@solana/web3.js";
 import {
   getAssociatedTokenAddress,
@@ -11,14 +12,18 @@ import {
   TOKEN_PROGRAM_ID,
 } from "@solana/spl-token";
 import bs58 from "bs58";
+import { getNetworkConfig, getExplorerUrl, formatUsdcAmount } from "@shared/network";
 
-const RPC_ENDPOINT = "https://api.devnet.solana.com";
-const USDC_MINT_DEVNET = "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"; // USDC devnet mint
-const TRANSFER_AMOUNT = 1000; // 0.001 USDC (6 decimals)
-
-const connection = new Connection(RPC_ENDPOINT, "confirmed");
-
+let connection: Connection | null = null;
 let senderKeypair: Keypair | null = null;
+
+function getConnection(): Connection {
+  if (!connection) {
+    const config = getNetworkConfig();
+    connection = new Connection(config.rpcEndpoint, config.confirmationLevel);
+  }
+  return connection;
+}
 
 function getSenderKeypair(): Keypair {
   if (senderKeypair) return senderKeypair;
@@ -37,6 +42,55 @@ function getSenderKeypair(): Keypair {
   }
 }
 
+export async function checkBalances(): Promise<{
+  solBalance: number;
+  usdcBalance: number;
+  hasSufficientSol: boolean;
+  hasSufficientUsdc: boolean;
+  error?: string;
+}> {
+  try {
+    const config = getNetworkConfig();
+    const senderKeypair = getSenderKeypair();
+    const conn = getConnection();
+    
+    const solBalance = await conn.getBalance(senderKeypair.publicKey);
+    const solBalanceInSol = solBalance / LAMPORTS_PER_SOL;
+    
+    const usdcMint = new PublicKey(config.usdcMint);
+    const senderTokenAccount = await getAssociatedTokenAddress(
+      usdcMint,
+      senderKeypair.publicKey
+    );
+    
+    let usdcBalance = 0;
+    try {
+      const tokenBalance = await conn.getTokenAccountBalance(senderTokenAccount);
+      usdcBalance = parseFloat(tokenBalance.value.uiAmount?.toString() || "0");
+    } catch (error) {
+      console.warn("USDC token account not found for sender");
+    }
+    
+    const transferAmountUsdc = formatUsdcAmount(config.transferAmount);
+    const requiredUsdc = transferAmountUsdc + config.minUsdcBuffer;
+    
+    return {
+      solBalance: solBalanceInSol,
+      usdcBalance,
+      hasSufficientSol: solBalanceInSol >= config.minSolBalance,
+      hasSufficientUsdc: usdcBalance >= requiredUsdc,
+    };
+  } catch (error: any) {
+    return {
+      solBalance: 0,
+      usdcBalance: 0,
+      hasSufficientSol: false,
+      hasSufficientUsdc: false,
+      error: error.message,
+    };
+  }
+}
+
 export async function validateWalletAddress(address: string): Promise<{ valid: boolean; error?: string }> {
   try {
     if (!address || address.length < 32 || address.length > 44) {
@@ -44,8 +98,9 @@ export async function validateWalletAddress(address: string): Promise<{ valid: b
     }
 
     const publicKey = new PublicKey(address);
+    const conn = getConnection();
     
-    const accountInfo = await connection.getAccountInfo(publicKey);
+    const accountInfo = await conn.getAccountInfo(publicKey);
     
     return { valid: true };
   } catch (error: any) {
@@ -57,12 +112,47 @@ export async function transferUSDC(recipientAddress: string): Promise<{
   signature: string;
   status: "success" | "failed";
   error?: string;
+  explorerUrl?: string;
+  errorType?: "insufficient_funds" | "disabled" | "recipient_account_missing" | "transaction_failed";
 }> {
+  const config = getNetworkConfig();
   const senderKeypair = getSenderKeypair();
+  const conn = getConnection();
+  
+  if (config.transferAmount === 0) {
+    return {
+      signature: "",
+      status: "failed",
+      error: "Transfers are currently disabled. Set TRANSFERS_ENABLED=true to enable.",
+      errorType: "disabled",
+    };
+  }
+  
+  const balances = await checkBalances();
+  
+  if (!balances.hasSufficientSol) {
+    return {
+      signature: "",
+      status: "failed",
+      error: `Insufficient SOL for transaction fees. Current: ${balances.solBalance.toFixed(4)} SOL, Required: ${config.minSolBalance} SOL`,
+      errorType: "insufficient_funds",
+    };
+  }
+  
+  if (!balances.hasSufficientUsdc) {
+    const transferAmountUsdc = formatUsdcAmount(config.transferAmount);
+    const requiredUsdc = transferAmountUsdc + config.minUsdcBuffer;
+    return {
+      signature: "",
+      status: "failed",
+      error: `Insufficient USDC balance. Current: ${balances.usdcBalance.toFixed(3)} USDC, Required: ${requiredUsdc.toFixed(3)} USDC`,
+      errorType: "insufficient_funds",
+    };
+  }
   
   try {
     const recipientPublicKey = new PublicKey(recipientAddress);
-    const usdcMint = new PublicKey(USDC_MINT_DEVNET);
+    const usdcMint = new PublicKey(config.usdcMint);
 
     const senderTokenAccount = await getAssociatedTokenAddress(
       usdcMint,
@@ -74,13 +164,14 @@ export async function transferUSDC(recipientAddress: string): Promise<{
       recipientPublicKey
     );
 
-    const recipientAccountInfo = await connection.getAccountInfo(recipientTokenAccount);
+    const recipientAccountInfo = await conn.getAccountInfo(recipientTokenAccount);
     
     if (!recipientAccountInfo) {
       return {
         signature: "",
         status: "failed",
         error: "Recipient does not have a USDC token account. They need to create one first.",
+        errorType: "recipient_account_missing",
       };
     }
 
@@ -89,24 +180,29 @@ export async function transferUSDC(recipientAddress: string): Promise<{
         senderTokenAccount,
         recipientTokenAccount,
         senderKeypair.publicKey,
-        TRANSFER_AMOUNT,
+        config.transferAmount,
         [],
         TOKEN_PROGRAM_ID
       )
     );
 
     const signature = await sendAndConfirmTransaction(
-      connection,
+      conn,
       transaction,
       [senderKeypair],
       {
-        commitment: "confirmed",
+        commitment: config.confirmationLevel,
       }
     );
+    
+    const explorerUrl = getExplorerUrl(signature, config.network);
+
+    console.log(`[TRANSFER SUCCESS] ${formatUsdcAmount(config.transferAmount)} USDC to ${recipientAddress} | Signature: ${signature}`);
 
     return {
       signature,
       status: "success",
+      explorerUrl,
     };
   } catch (error: any) {
     console.error("Solana transfer error:", error);
@@ -122,24 +218,36 @@ export async function transferUSDC(recipientAddress: string): Promise<{
       signature: "",
       status: "failed",
       error: errorMessage,
+      errorType: "transaction_failed",
     };
   }
 }
 
 export async function getSenderBalance(): Promise<number> {
   try {
+    const config = getNetworkConfig();
     const senderKeypair = getSenderKeypair();
-    const usdcMint = new PublicKey(USDC_MINT_DEVNET);
+    const conn = getConnection();
+    const usdcMint = new PublicKey(config.usdcMint);
     
     const senderTokenAccount = await getAssociatedTokenAddress(
       usdcMint,
       senderKeypair.publicKey
     );
 
-    const balance = await connection.getTokenAccountBalance(senderTokenAccount);
+    const balance = await conn.getTokenAccountBalance(senderTokenAccount);
     return parseFloat(balance.value.uiAmount?.toString() || "0");
   } catch (error) {
     console.error("Failed to get sender balance:", error);
     return 0;
   }
+}
+
+export function getNetworkInfo() {
+  const config = getNetworkConfig();
+  return {
+    network: config.network,
+    transferAmount: formatUsdcAmount(config.transferAmount),
+    explorerUrl: config.explorerUrl,
+  };
 }

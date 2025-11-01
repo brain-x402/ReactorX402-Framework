@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a web application that combines AI-powered chat functionality with Solana blockchain rewards. Users connect their Solana wallet, chat with an AI assistant powered by Mistral AI, and earn 0.001 USDC on the Solana devnet for each interaction. The application features a modern chat interface with real-time transaction tracking and wallet integration.
+This is a web application that combines AI-powered chat functionality with Solana blockchain rewards. Users connect their Solana wallet, chat with an AI assistant powered by Mistral AI, and earn USDC for each interaction. The application supports both Solana mainnet (real USDC) and devnet (test USDC) with configurable network settings, comprehensive rate limiting, balance checks, and transaction monitoring. Features include a modern chat interface with real-time transaction tracking, wallet integration, and mainnet safety warnings.
 
 ## User Preferences
 
@@ -77,10 +77,25 @@ Preferred communication style: Simple, everyday language.
 - Conversation history maintained client-side and sent with each request
 - Requires `MISTRAL_API_KEY` environment variable
 
-**Blockchain Infrastructure**: Solana Devnet
-- RPC Endpoint: `https://api.devnet.solana.com`
-- Token: USDC devnet mint (`4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`)
-- Transfer amount: 1000 (0.001 USDC with 6 decimals)
+**Blockchain Infrastructure**: Solana (Mainnet/Devnet configurable)
+- **Network Configuration**: Environment-driven via `SOLANA_NETWORK` (defaults to mainnet)
+- **Mainnet**:
+  - RPC Endpoint: `https://api.mainnet-beta.solana.com`
+  - USDC mint: `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`
+  - Transfer amount: 1000 (0.001 USDC with 6 decimals) - configurable via `TRANSFER_AMOUNT`
+  - Min USDC buffer: 1.0 USDC (prevents complete wallet drainage)
+  - Daily transfer limit: 100 transfers/day (configurable via `DAILY_TRANSFER_LIMIT`)
+- **Devnet**:
+  - RPC Endpoint: `https://api.devnet.solana.com`
+  - USDC mint: `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`
+  - Transfer amount: 1000 (0.001 USDC with 6 decimals)
+  - Daily transfer limit: 1000 transfers/day
+- **Safety Features**:
+  - SOL balance check (minimum 0.01 SOL for gas fees)
+  - USDC balance validation before transfers
+  - Configurable minimum USDC buffer to prevent complete drainage
+  - Daily transfer limits to prevent abuse
+  - Rate limiting: 5-minute cooldown per wallet, 20 requests/hour per IP
 - Uses `@solana/web3.js` and `@solana/spl-token` for blockchain interactions
 - Requires `SOLANA_PRIVATE_KEY` (base58 encoded) for transaction signing
 
@@ -105,3 +120,63 @@ Preferred communication style: Simple, everyday language.
 - `@replit/vite-plugin-runtime-error-modal` for error overlay
 - `@replit/vite-plugin-cartographer` for code mapping
 - `@replit/vite-plugin-dev-banner` for development indicators
+
+## Environment Configuration
+
+The application supports flexible network configuration via environment variables for seamless switching between devnet (testing) and mainnet (production) environments.
+
+### Required Environment Variables (Secrets)
+
+- **MISTRAL_API_KEY**: API key for Mistral AI service (get from https://console.mistral.ai/)
+- **SOLANA_PRIVATE_KEY**: Base58-encoded private key for the sender wallet (must have USDC and SOL)
+- **SESSION_SECRET**: Secret key for session management
+
+### Optional Configuration Variables
+
+- **SOLANA_NETWORK**: Network selection - `mainnet` or `devnet` (default: `mainnet`)
+- **TRANSFER_AMOUNT**: USDC transfer amount in smallest units (default: 1000 = 0.001 USDC)
+- **DAILY_TRANSFER_LIMIT**: Maximum transfers per day (default: 100 for mainnet, 1000 for devnet)
+- **MIN_USDC_BUFFER**: Minimum USDC balance to maintain in sender wallet (default: 1.0 for mainnet, 0.01 for devnet)
+- **TRANSFERS_ENABLED**: Set to `false` to disable transfers completely (default: `true`)
+
+### Network Setup Guide
+
+#### For Devnet Testing (Safe, No Real Money)
+```
+SOLANA_NETWORK=devnet
+MISTRAL_API_KEY=your_mistral_key
+SOLANA_PRIVATE_KEY=your_devnet_wallet_private_key
+SESSION_SECRET=random_secret_string
+```
+
+#### For Mainnet Production (Real USDC Transfers)
+```
+SOLANA_NETWORK=mainnet
+MISTRAL_API_KEY=your_mistral_key
+SOLANA_PRIVATE_KEY=your_mainnet_wallet_private_key
+SESSION_SECRET=random_secret_string
+TRANSFER_AMOUNT=1000
+DAILY_TRANSFER_LIMIT=100
+MIN_USDC_BUFFER=1.0
+```
+
+### Mainnet Safety Checklist
+
+Before deploying to mainnet, ensure:
+
+1. ✅ Sender wallet has sufficient USDC balance
+2. ✅ Sender wallet has sufficient SOL for transaction fees (~0.01 SOL minimum)
+3. ✅ `SOLANA_PRIVATE_KEY` is stored securely (use Replit Secrets, never commit to version control)
+4. ✅ `DAILY_TRANSFER_LIMIT` is set to prevent excessive spending
+5. ✅ `MIN_USDC_BUFFER` is configured to prevent complete wallet drainage
+6. ✅ Rate limiting is active (default: 5-min cooldown per wallet, 20 req/hour per IP)
+7. ✅ Frontend displays mainnet warning dialog before first transfer
+8. ✅ Monitor sender wallet balance regularly
+
+### Monitoring & Security
+
+- **Balance Monitoring**: Frontend displays sender's SOL and USDC balances
+- **Rate Limiting**: Automatic per-wallet and per-IP rate limits prevent abuse
+- **Transaction Logging**: All transfers logged with signature, amount, timestamp, recipient
+- **Balance Checks**: Preflight validation ensures sufficient SOL for gas and USDC for transfers
+- **Explorer Links**: All successful transactions link to Solscan for verification

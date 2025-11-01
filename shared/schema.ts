@@ -14,6 +14,7 @@ export const transactionSchema = z.object({
   timestamp: z.number(),
   status: z.enum(["pending", "success", "failed"]),
   error: z.string().optional(),
+  explorerUrl: z.string().optional(),
 });
 
 export const chatRequestSchema = z.object({

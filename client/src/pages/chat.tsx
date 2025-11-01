@@ -1,15 +1,38 @@
 import { useState, useRef, useEffect } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Send, MessageSquare, Wallet, CheckCircle2, XCircle, ExternalLink, Loader2, AlertCircle } from "lucide-react";
+import { Send, MessageSquare, Wallet, CheckCircle2, XCircle, ExternalLink, Loader2, AlertCircle, AlertTriangle } from "lucide-react";
 import type { Message, ChatResponse, Transaction } from "@shared/schema";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 type MessageWithTransaction = Message & { transaction?: Transaction };
+
+interface NetworkInfo {
+  network: "mainnet" | "devnet";
+  transferAmount: number;
+  explorerUrl: string;
+  senderBalance: {
+    sol: number;
+    usdc: number;
+  };
+  dailyLimit: {
+    remaining: number;
+  };
+}
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<MessageWithTransaction[]>([]);
@@ -18,9 +41,16 @@ export default function ChatPage() {
   const [isWalletValid, setIsWalletValid] = useState(false);
   const [showWalletInput, setShowWalletInput] = useState(true);
   const [walletValidationError, setWalletValidationError] = useState("");
+  const [showMainnetWarning, setShowMainnetWarning] = useState(false);
+  const [hasShownMainnetWarning, setHasShownMainnetWarning] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { toast } = useToast();
+
+  const { data: networkInfo } = useQuery<NetworkInfo>({
+    queryKey: ["/api/network-info"],
+    refetchInterval: 30000,
+  });
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -29,6 +59,13 @@ export default function ChatPage() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    if (networkInfo?.network === "mainnet" && isWalletValid && !hasShownMainnetWarning && messages.length === 0) {
+      setShowMainnetWarning(true);
+      setHasShownMainnetWarning(true);
+    }
+  }, [networkInfo, isWalletValid, hasShownMainnetWarning, messages.length]);
 
   const validateWallet = async (address: string) => {
     if (!address || address.length < 32) {
@@ -94,7 +131,7 @@ export default function ChatPage() {
       if (data.transaction && data.transaction.status === "success") {
         toast({
           title: "USDC Sent! 🎉",
-          description: `0.001 USDC transferred to your wallet`,
+          description: `${data.transaction.amount} USDC transferred to your wallet`,
         });
       }
     },
@@ -112,6 +149,12 @@ export default function ChatPage() {
           title = "Payment Service Not Configured";
           description = "The Solana payment service is not set up. Please add SOLANA_PRIVATE_KEY to your secrets.";
         }
+      } else if (errorMessage.includes("429") || errorMessage.includes("Rate limit") || errorMessage.includes("wait")) {
+        title = "Rate Limit Reached";
+        description = errorMessage;
+      } else if (errorMessage.includes("402") || errorMessage.includes("Insufficient")) {
+        title = "Insufficient Funds";
+        description = errorMessage;
       }
       
       toast({
@@ -177,10 +220,16 @@ export default function ChatPage() {
                 </Button>
               </div>
             )}
-            <Badge variant="outline" className="gap-1 text-xs">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
-              Devnet
-            </Badge>
+            {networkInfo && (
+              <Badge 
+                variant={networkInfo.network === "mainnet" ? "destructive" : "outline"} 
+                className="gap-1 text-xs"
+                data-testid="badge-network"
+              >
+                <span className={`w-2 h-2 rounded-full ${networkInfo.network === "mainnet" ? "bg-orange-500" : "bg-green-500"}`} />
+                {networkInfo.network === "mainnet" ? "Mainnet - Real USDC" : "Devnet"}
+              </Badge>
+            )}
           </div>
         </div>
       </header>
@@ -224,9 +273,21 @@ export default function ChatPage() {
                     Connect Wallet
                   </Button>
                   
-                  <p className="text-xs text-muted-foreground text-center">
-                    You'll receive 0.001 USDC for each message you send
-                  </p>
+                  {networkInfo && (
+                    <>
+                      <p className="text-xs text-muted-foreground text-center">
+                        You'll receive {networkInfo.transferAmount} USDC for each message
+                      </p>
+                      {networkInfo.network === "mainnet" && (
+                        <div className="flex items-start gap-2 p-2 bg-orange-50 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-800 rounded-md">
+                          <AlertTriangle className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
+                          <p className="text-xs text-orange-800 dark:text-orange-200">
+                            <strong>Mainnet Mode:</strong> Real USDC will be transferred from the application wallet.
+                          </p>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
               </Card>
             </div>
@@ -240,7 +301,7 @@ export default function ChatPage() {
                   <div className="space-y-2">
                     <h2 className="text-2xl font-semibold">Start a conversation</h2>
                     <p className="text-muted-foreground max-w-sm">
-                      Messages will appear here. You'll receive 0.001 USDC for each interaction.
+                      Messages will appear here. {networkInfo && `You'll receive ${networkInfo.transferAmount} USDC for each interaction.`}
                     </p>
                   </div>
                 </div>
@@ -300,6 +361,36 @@ export default function ChatPage() {
           </div>
         </div>
       </main>
+
+      <AlertDialog open={showMainnetWarning} onOpenChange={setShowMainnetWarning}>
+        <AlertDialogContent data-testid="dialog-mainnet-warning">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 text-orange-500" />
+              Mainnet Mode - Real Money
+            </AlertDialogTitle>
+            <AlertDialogDescription className="space-y-3 text-left">
+              <p>
+                You are connected to <strong>Solana Mainnet</strong>. This means:
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Real USDC will be transferred to your wallet</li>
+                <li>Each chat interaction earns you {networkInfo?.transferAmount} USDC</li>
+                <li>Transfers are subject to rate limits and daily caps</li>
+                <li>Transactions are permanent and irreversible</li>
+              </ul>
+              <p className="text-sm font-medium">
+                Make sure your wallet address is correct before proceeding.
+              </p>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction onClick={() => setShowMainnetWarning(false)} data-testid="button-acknowledge-warning">
+              I Understand
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
@@ -338,8 +429,6 @@ function MessageBubble({ message, transaction }: { message: MessageWithTransacti
 }
 
 function TransactionNotification({ transaction }: { transaction: Transaction }) {
-  const explorerUrl = `https://explorer.solana.com/tx/${transaction.signature}?cluster=devnet`;
-
   return (
     <Card className="mt-2 p-3" data-testid="transaction-notification">
       <div className="flex items-center justify-between gap-2">
@@ -354,7 +443,7 @@ function TransactionNotification({ transaction }: { transaction: Transaction }) 
           
           <div className="flex-1 min-w-0">
             <p className="text-xs font-medium">
-              {transaction.status === "success" && "0.001 USDC sent"}
+              {transaction.status === "success" && `${transaction.amount} USDC sent`}
               {transaction.status === "pending" && "Sending USDC..."}
               {transaction.status === "failed" && "Transfer failed"}
             </p>
@@ -364,9 +453,9 @@ function TransactionNotification({ transaction }: { transaction: Transaction }) 
           </div>
         </div>
 
-        {transaction.status === "success" && (
+        {transaction.status === "success" && transaction.explorerUrl && (
           <a
-            href={explorerUrl}
+            href={transaction.explorerUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs text-primary hover:underline flex items-center gap-1 flex-shrink-0"
