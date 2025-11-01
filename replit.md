@@ -148,7 +148,7 @@ The application supports flexible network configuration via environment variable
 - **RATE_LIMITING_ENABLED**: Enable/disable rate limiting - `true` or `false` (default: `true`)
   - ⚠️ **WARNING**: Setting to `false` on mainnet removes all transfer limits and exposes treasury to abuse
 - **DAILY_TRANSFER_LIMIT**: Maximum transfers per day (default: 100 for mainnet, 1000 for devnet)
-- **MIN_USDC_BUFFER**: Minimum USDC balance to maintain in sender wallet (default: 1.0 for mainnet, 0.01 for devnet)
+- **MIN_USDC_BUFFER**: Minimum USDC balance to maintain in sender wallet (currently set to: 0.01 USDC)
 - **TRANSFERS_ENABLED**: Set to `false` to disable transfers completely (default: `true`)
 
 ### Network Setup Guide
@@ -169,7 +169,8 @@ SOLANA_PRIVATE_KEY=your_mainnet_wallet_private_key
 SESSION_SECRET=random_secret_string
 TRANSFER_AMOUNT=1000
 DAILY_TRANSFER_LIMIT=100
-MIN_USDC_BUFFER=1.0
+MIN_USDC_BUFFER=0.01
+RATE_LIMITING_ENABLED=false
 ```
 
 ### Mainnet Safety Checklist

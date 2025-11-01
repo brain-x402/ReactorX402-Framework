@@ -18,6 +18,10 @@ externalPort = 80
 localPort = 37155
 externalPort = 3001
 
+[[ports]]
+localPort = 43649
+externalPort = 3000
+
 [env]
 PORT = "5000"
 
@@ -47,3 +51,4 @@ waitForPort = 5000
 [userenv.shared]
 SOLANA_NETWORK = "mainnet"
 RATE_LIMITING_ENABLED = "false"
+MIN_USDC_BUFFER = "0.01"
