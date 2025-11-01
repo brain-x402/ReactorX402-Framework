@@ -292,19 +292,21 @@ export default function ChatPage() {
               <AlertTriangle className="w-5 h-5 text-orange-500" />
               Mainnet Mode - Real Money
             </AlertDialogTitle>
-            <AlertDialogDescription className="space-y-3 text-left">
-              <p>
-                You are connected to <strong>Solana Mainnet</strong>. This means:
-              </p>
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Real USDC will be transferred to your wallet</li>
-                <li>Each chat interaction earns you {networkInfo?.transferAmount} USDC</li>
-                <li>Transfers are subject to rate limits and daily caps</li>
-                <li>Transactions are permanent and irreversible</li>
-              </ul>
-              <p className="text-sm font-medium">
-                Make sure your wallet address is correct before proceeding.
-              </p>
+            <AlertDialogDescription asChild>
+              <div className="space-y-3 text-left">
+                <p>
+                  You are connected to <strong>Solana Mainnet</strong>. This means:
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Real USDC will be transferred to your wallet</li>
+                  <li>Each chat interaction earns you {networkInfo?.transferAmount} USDC</li>
+                  <li>Transfers are subject to rate limits and daily caps</li>
+                  <li>Transactions are permanent and irreversible</li>
+                </ul>
+                <p className="text-sm font-medium">
+                  Make sure your wallet address is correct before proceeding.
+                </p>
+              </div>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

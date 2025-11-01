@@ -30,8 +30,9 @@ export async function generateChatResponse(
     ];
 
     const chatResponse = await client.chat.complete({
-      model: "mistral-large-latest",
+      model: "mistral-small-latest",
       messages,
+      temperature: 0.7,
     });
 
     const responseContent = chatResponse.choices?.[0]?.message?.content;
@@ -40,7 +41,11 @@ export async function generateChatResponse(
       throw new Error("No response from Mistral AI");
     }
 
-    return responseContent;
+    if (typeof responseContent === "string") {
+      return responseContent;
+    }
+
+    throw new Error("Unexpected response format from Mistral AI");
   } catch (error: any) {
     console.error("Mistral AI error:", error);
     throw new Error(`Failed to generate AI response: ${error.message}`);
