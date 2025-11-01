@@ -102,8 +102,7 @@ Preferred communication style: Simple, everyday language.
   - SOL balance check (minimum 0.01 SOL for gas fees)
   - USDC balance validation before transfers
   - Configurable minimum USDC buffer to prevent complete drainage
-  - Daily transfer limits to prevent abuse
-  - Rate limiting: 5-minute cooldown per wallet, 20 requests/hour per IP
+  - Rate limiting: **Currently disabled** (code remains in codebase for future re-enablement)
 - Uses `@solana/web3.js` and `@solana/spl-token` for blockchain interactions
 - Requires `SOLANA_PRIVATE_KEY` (base58 encoded) for transaction signing
 
