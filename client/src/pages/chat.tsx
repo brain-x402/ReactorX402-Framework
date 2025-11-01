@@ -2,11 +2,12 @@ import { useState, useRef, useEffect } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Send, MessageSquare, Wallet, CheckCircle2, XCircle, ExternalLink, Loader2, AlertCircle, AlertTriangle } from "lucide-react";
+import { useWallet } from "@/contexts/WalletContext";
+import { WalletButton } from "@/components/WalletButton";
+import { Send, MessageSquare, CheckCircle2, XCircle, ExternalLink, Loader2, AlertCircle, AlertTriangle } from "lucide-react";
 import type { Message, ChatResponse, Transaction } from "@shared/schema";
 import {
   AlertDialog,
@@ -37,15 +38,13 @@ interface NetworkInfo {
 export default function ChatPage() {
   const [messages, setMessages] = useState<MessageWithTransaction[]>([]);
   const [inputMessage, setInputMessage] = useState("");
-  const [walletAddress, setWalletAddress] = useState("");
-  const [isWalletValid, setIsWalletValid] = useState(false);
-  const [showWalletInput, setShowWalletInput] = useState(true);
-  const [walletValidationError, setWalletValidationError] = useState("");
+  const [isWalletValidated, setIsWalletValidated] = useState(false);
   const [showMainnetWarning, setShowMainnetWarning] = useState(false);
   const [hasShownMainnetWarning, setHasShownMainnetWarning] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { toast } = useToast();
+  const { connected, publicKey } = useWallet();
 
   const { data: networkInfo } = useQuery<NetworkInfo>({
     queryKey: ["/api/network-info"],
@@ -61,43 +60,42 @@ export default function ChatPage() {
   }, [messages]);
 
   useEffect(() => {
-    if (networkInfo?.network === "mainnet" && isWalletValid && !hasShownMainnetWarning && messages.length === 0) {
+    if (networkInfo?.network === "mainnet" && connected && isWalletValidated && !hasShownMainnetWarning && messages.length === 0) {
       setShowMainnetWarning(true);
       setHasShownMainnetWarning(true);
     }
-  }, [networkInfo, isWalletValid, hasShownMainnetWarning, messages.length]);
+  }, [networkInfo, connected, isWalletValidated, hasShownMainnetWarning, messages.length]);
 
-  const validateWallet = async (address: string) => {
-    if (!address || address.length < 32) {
-      setWalletValidationError("Please enter a valid Solana wallet address");
-      setIsWalletValid(false);
-      return false;
-    }
-
-    try {
-      const res = await apiRequest("POST", "/api/validate-wallet", { address });
-      const response = await res.json();
-      
-      if (response.valid) {
-        setIsWalletValid(true);
-        setWalletValidationError("");
-        setShowWalletInput(false);
-        toast({
-          title: "Wallet connected",
-          description: "You can now start chatting and earning USDC!",
-        });
-        return true;
-      } else {
-        setWalletValidationError(response.error || "Invalid wallet address");
-        setIsWalletValid(false);
-        return false;
+  useEffect(() => {
+    const validateConnectedWallet = async () => {
+      if (connected && publicKey && !isWalletValidated) {
+        try {
+          const res = await apiRequest("POST", "/api/validate-wallet", { address: publicKey });
+          const response = await res.json();
+          
+          if (response.valid) {
+            setIsWalletValidated(true);
+          } else {
+            toast({
+              variant: "destructive",
+              title: "Wallet Validation Failed",
+              description: response.error || "Unable to validate your wallet on Solana network",
+            });
+          }
+        } catch (error: any) {
+          toast({
+            variant: "destructive",
+            title: "Validation Error",
+            description: error.message || "Failed to validate wallet",
+          });
+        }
+      } else if (!connected) {
+        setIsWalletValidated(false);
       }
-    } catch (error: any) {
-      setWalletValidationError(error.message || "Failed to validate wallet address");
-      setIsWalletValid(false);
-      return false;
-    }
-  };
+    };
+
+    validateConnectedWallet();
+  }, [connected, publicKey, isWalletValidated, toast]);
 
   const chatMutation = useMutation({
     mutationFn: async (message: string) => {
@@ -112,7 +110,7 @@ export default function ChatPage() {
       
       const res = await apiRequest("POST", "/api/chat", {
         message,
-        walletAddress,
+        walletAddress: publicKey!,
         conversationHistory: messages.map(({ transaction, ...msg }) => msg),
       });
       
@@ -170,7 +168,7 @@ export default function ChatPage() {
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
     
-    if (!isWalletValid) {
+    if (!connected || !publicKey || !isWalletValidated) {
       toast({
         title: "Wallet not connected",
         description: "Please connect your Solana wallet first",
@@ -201,25 +199,7 @@ export default function ChatPage() {
           </div>
           
           <div className="flex items-center gap-2">
-            {isWalletValid && (
-              <div className="flex items-center gap-2">
-                <Badge variant="secondary" className="gap-1">
-                  <CheckCircle2 className="w-3 h-3" />
-                  <span className="hidden sm:inline">Connected</span>
-                </Badge>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => {
-                    setShowWalletInput(true);
-                    setIsWalletValid(false);
-                  }}
-                  data-testid="button-disconnect-wallet"
-                >
-                  <Wallet className="w-4 h-4" />
-                </Button>
-              </div>
-            )}
+            <WalletButton />
             {networkInfo && (
               <Badge 
                 variant={networkInfo.network === "mainnet" ? "destructive" : "outline"} 
@@ -236,63 +216,6 @@ export default function ChatPage() {
 
       <main className="flex-1 overflow-hidden">
         <div className="h-full flex flex-col">
-          {showWalletInput && !isWalletValid && (
-            <div className="p-4">
-              <Card className="mx-auto max-w-md p-6">
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <label htmlFor="wallet-input" className="text-sm font-medium flex items-center gap-2">
-                      <Wallet className="w-4 h-4" />
-                      Solana Wallet Address
-                    </label>
-                    <Input
-                      id="wallet-input"
-                      type="text"
-                      placeholder="Enter your Solana wallet address"
-                      className="font-mono text-sm"
-                      value={walletAddress}
-                      onChange={(e) => {
-                        setWalletAddress(e.target.value);
-                        setWalletValidationError("");
-                      }}
-                      data-testid="input-wallet-address"
-                    />
-                    {walletValidationError && (
-                      <p className="text-xs text-destructive flex items-center gap-1">
-                        <XCircle className="w-3 h-3" />
-                        {walletValidationError}
-                      </p>
-                    )}
-                  </div>
-                  
-                  <Button
-                    onClick={() => validateWallet(walletAddress)}
-                    className="w-full"
-                    data-testid="button-connect-wallet"
-                  >
-                    Connect Wallet
-                  </Button>
-                  
-                  {networkInfo && (
-                    <>
-                      <p className="text-xs text-muted-foreground text-center">
-                        You'll receive {networkInfo.transferAmount} USDC for each message
-                      </p>
-                      {networkInfo.network === "mainnet" && (
-                        <div className="flex items-start gap-2 p-2 bg-orange-50 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-800 rounded-md">
-                          <AlertTriangle className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
-                          <p className="text-xs text-orange-800 dark:text-orange-200">
-                            <strong>Mainnet Mode:</strong> Real USDC will be transferred from the application wallet.
-                          </p>
-                        </div>
-                      )}
-                    </>
-                  )}
-                </div>
-              </Card>
-            </div>
-          )}
-
           <div className="flex-1 overflow-y-auto pb-32" data-testid="chat-messages-container">
             <div className="mx-auto max-w-3xl px-4 md:px-6 py-6">
               {messages.length === 0 ? (
@@ -337,16 +260,16 @@ export default function ChatPage() {
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder={isWalletValid ? "Type your message..." : "Connect wallet to start chatting"}
+                  placeholder={connected && isWalletValidated ? "Type your message..." : "Connect wallet to start chatting"}
                   className="flex-1 min-h-[44px] max-h-[200px] px-6 py-3 text-base rounded-full border bg-background resize-none focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-50"
-                  disabled={!isWalletValid || chatMutation.isPending}
+                  disabled={!connected || !isWalletValidated || chatMutation.isPending}
                   rows={1}
                   data-testid="input-message"
                 />
                 <Button
                   type="submit"
                   size="icon"
-                  disabled={!inputMessage.trim() || !isWalletValid || chatMutation.isPending}
+                  disabled={!inputMessage.trim() || !connected || !isWalletValidated || chatMutation.isPending}
                   className="w-11 h-11 rounded-full flex-shrink-0"
                   data-testid="button-send-message"
                 >
