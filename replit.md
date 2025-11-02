@@ -12,19 +12,20 @@ The codebase implements a **professional dual-purpose platform**:
 
 ### 1. Whitepaper Documentation Website
 - 9 professional dark-themed pages showcasing x402Pay vision and technology
-- Solana-inspired gradient aesthetics (purple-to-teal)
+- Monochromatic dark blackish-gray theme (neutral grayscale aesthetics)
 - Persistent navigation header with mobile responsiveness
 - Sections: Home, Executive Summary, Introduction, Solution, x402 Sol, Device Identity, SDK, Tokenomics, Roadmap
+- Streamlined home page: Single "Get Started" CTA, simplified layout
 
 ### 2. Proof-of-Concept Chat Application
 Professional AI chat interface demonstrating core payment infrastructure:
 - **AI Integration**: Mistral AI-powered conversational interface
-- **Wallet Connection**: Phantom wallet integration with USDC micropayments (0.001 USDC per interaction)
+- **Wallet Connection**: Phantom wallet integration with USDC micropayments (0.001 USDC per prompt)
 - **Network Support**: Solana mainnet/devnet with configurable rate limiting
 - **Professional UI**: 
   - Desktop sidebar with real-time network status, balance monitoring, and session statistics
   - Mobile-responsive overlay sidebar
-  - Dark theme with Solana gradient accents
+  - Monochromatic dark theme with subtle gray gradients
   - Transaction tracking with blockchain explorer links
 - **Features**: Clear chat history, session statistics (messages, earnings, successful transactions), daily limit tracking
 
@@ -43,8 +44,8 @@ Preferred communication style: Simple, everyday language.
 **UI Component Library**: Shadcn/ui with Radix UI primitives, styled with Tailwind CSS using a custom design system based on the "new-york" style
 
 **Design Philosophy**: 
-- **Whitepaper Site**: Professional documentation design with Solana gradient branding, technical sophistication through restrained visual treatment, and deep hierarchies for complex content
-- **Chat Interface**: Modern conversational UI with sidebar-based layout, real-time status displays, and professional dark theme with gradient accents
+- **Whitepaper Site**: Professional documentation design with monochromatic dark gray theme, technical sophistication through minimalist grayscale aesthetics, and deep hierarchies for complex content
+- **Chat Interface**: Modern conversational UI with sidebar-based layout, real-time status displays, and professional dark theme with subtle gray gradients
 
 **State Management**: TanStack Query (React Query) for server state management with custom query client configuration. Local component state using React hooks for UI interactions.
 
@@ -54,15 +55,17 @@ Preferred communication style: Simple, everyday language.
 - **Chat Page**: 
   - Persistent sidebar (desktop) showing network status, SOL/USDC balances, daily transfer limits, and session statistics
   - Mobile-responsive overlay sidebar with hamburger menu
-  - Gradient send button (purple-to-teal) matching brand aesthetic
+  - Gray gradient send button (from-gray-600 to-gray-700)
   - Enhanced message bubbles with AI avatar indicators
-  - Professional empty state with gradient branding
+  - Professional empty state with monochromatic branding
   - Clear chat functionality with confirmation dialog
 - **Whitepaper Site**:
   - Sticky navigation header with all sections accessible
-  - Dark theme with Solana gradient accents throughout
+  - Dark blackish-gray theme with neutral gradients throughout
   - Mobile-friendly responsive layout
   - Client-side routing for smooth transitions
+  - Streamlined home page (no version badge, "Built by" section, or "Try Demo" button)
+  - Cost display: "0.001 USDC" per prompt (not per transaction)
 
 ### Backend Architecture
 
