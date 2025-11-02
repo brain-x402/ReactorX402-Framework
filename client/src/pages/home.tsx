@@ -9,11 +9,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-purple-950/20 to-black">
+    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-900/50 to-black">
       <section className="min-h-screen flex items-center justify-center px-8 py-32">
         <div className="max-w-6xl mx-auto text-center space-y-8">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight" data-testid="text-hero-title">
-            <span className="bg-gradient-to-r from-purple-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gray-300 via-gray-200 to-gray-400 bg-clip-text text-transparent">
               x402Pay
             </span>
           </h1>
@@ -27,56 +27,37 @@ export default function Home() {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 max-w-4xl mx-auto">
-            <div className="p-6 rounded-xl border border-purple-500/20 bg-purple-500/5 backdrop-blur-sm space-y-2" data-testid="card-feature-speed">
-              <Zap className="w-8 h-8 text-teal-400 mx-auto" />
+            <div className="p-6 rounded-xl border border-gray-700/40 bg-gray-800/20 backdrop-blur-sm space-y-2" data-testid="card-feature-speed">
+              <Zap className="w-8 h-8 text-gray-300 mx-auto" />
               <div className="text-3xl font-bold text-foreground">40,000 TPS</div>
               <div className="text-sm text-muted-foreground">Solana Speed</div>
             </div>
             
-            <div className="p-6 rounded-xl border border-teal-500/20 bg-teal-500/5 backdrop-blur-sm space-y-2" data-testid="card-feature-cost">
-              <Shield className="w-8 h-8 text-blue-400 mx-auto" />
-              <div className="text-3xl font-bold text-foreground">$0.00005</div>
-              <div className="text-sm text-muted-foreground">Per Transaction</div>
+            <div className="p-6 rounded-xl border border-gray-700/40 bg-gray-800/20 backdrop-blur-sm space-y-2" data-testid="card-feature-cost">
+              <Shield className="w-8 h-8 text-gray-300 mx-auto" />
+              <div className="text-3xl font-bold text-foreground">0.001 USDC</div>
+              <div className="text-sm text-muted-foreground">Get Per Prompt</div>
             </div>
             
-            <div className="p-6 rounded-xl border border-blue-500/20 bg-blue-500/5 backdrop-blur-sm space-y-2" data-testid="card-feature-time">
-              <Layers className="w-8 h-8 text-purple-400 mx-auto" />
+            <div className="p-6 rounded-xl border border-gray-700/40 bg-gray-800/20 backdrop-blur-sm space-y-2" data-testid="card-feature-time">
+              <Layers className="w-8 h-8 text-gray-300 mx-auto" />
               <div className="text-3xl font-bold text-foreground">&lt;1 sec</div>
               <div className="text-sm text-muted-foreground">Settlement Time</div>
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+          <div className="flex justify-center pt-8">
             <Link href="/executive-summary">
-              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-teal-600 hover-elevate active-elevate-2" data-testid="button-get-started">
+              <Button size="lg" className="bg-gradient-to-r from-gray-700 to-gray-800 hover-elevate active-elevate-2" data-testid="button-get-started">
                 Get Started
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
-            
-            <Link href="/chat">
-              <Button size="lg" variant="outline" className="border-purple-500/30 backdrop-blur-sm hover-elevate active-elevate-2" data-testid="button-try-demo">
-                Try Demo
-              </Button>
-            </Link>
-          </div>
-          
-          <div className="pt-16 space-y-4">
-            <p className="text-sm font-medium text-muted-foreground">Built by</p>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-              <span>Dr. Sarah Chen, CTO</span>
-              <span className="text-muted-foreground/50">•</span>
-              <span>Marcus Rodriguez, Head of Blockchain</span>
-              <span className="text-muted-foreground/50">•</span>
-              <span>Dr. Aisha Patel, IoT Architect</span>
-              <span className="text-muted-foreground/50">•</span>
-              <span>James Liu, Product Strategy</span>
-            </div>
           </div>
         </div>
       </section>
       
-      <section className="py-24 px-8 border-t border-purple-500/10">
+      <section className="py-24 px-8 border-t border-gray-800/50">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h2 className="text-2xl font-semibold text-foreground">
             The Future of IoT Payments
@@ -86,7 +67,7 @@ export default function Home() {
           </p>
           <div className="pt-4">
             <Link href="/x402-sol">
-              <Button variant="ghost" className="text-purple-400 hover-elevate" data-testid="link-learn-protocol">
+              <Button variant="ghost" className="text-gray-300 hover-elevate" data-testid="link-learn-protocol">
                 Learn about x402 Sol Protocol
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

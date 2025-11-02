@@ -24,7 +24,7 @@ export function Navigation() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 flex">
-          <Link href="/" data-testid="link-brand" className="font-bold text-lg bg-gradient-to-r from-purple-400 to-teal-400 bg-clip-text text-transparent cursor-pointer">
+          <Link href="/" data-testid="link-brand" className="font-bold text-lg bg-gradient-to-r from-gray-300 to-gray-400 bg-clip-text text-transparent cursor-pointer">
             x402Pay
           </Link>
         </div>

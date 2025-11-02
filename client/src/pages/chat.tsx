@@ -221,11 +221,11 @@ export default function ChatPage() {
       <aside className={`hidden lg:flex flex-col w-80 border-r border-border/40 bg-background/60 backdrop-blur-xl`}>
         <div className="p-6 border-b border-border/40">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-teal-500 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center">
               <MessageSquare className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h2 className="font-bold text-lg bg-gradient-to-r from-purple-400 to-teal-400 bg-clip-text text-transparent">
+              <h2 className="font-bold text-lg bg-gradient-to-r from-gray-300 to-gray-400 bg-clip-text text-transparent">
                 AI Chat
               </h2>
               <p className="text-xs text-muted-foreground">Earn USDC per message</p>
@@ -301,7 +301,7 @@ export default function ChatPage() {
                     <TrendingUp className="w-4 h-4 text-green-500" />
                     <span className="text-sm text-muted-foreground">Total Earned</span>
                   </div>
-                  <span className="text-2xl font-bold bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent" data-testid="text-total-earned">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-gray-400 to-gray-500 bg-clip-text text-transparent" data-testid="text-total-earned">
                     {stats.totalEarned}
                   </span>
                 </div>
@@ -313,7 +313,7 @@ export default function ChatPage() {
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-teal-500" />
+                    <CheckCircle2 className="w-4 h-4 text-gray-400" />
                     <span className="text-sm text-muted-foreground">Successful</span>
                   </div>
                   <span className="text-2xl font-bold" data-testid="text-successful-transactions">{stats.successfulTransactions}</span>
@@ -343,11 +343,11 @@ export default function ChatPage() {
           <aside className="w-80 h-full bg-background border-r border-border/40" onClick={(e) => e.stopPropagation()}>
             <div className="p-6 border-b border-border/40 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-teal-500 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center">
                   <MessageSquare className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h2 className="font-bold text-lg bg-gradient-to-r from-purple-400 to-teal-400 bg-clip-text text-transparent">
+                  <h2 className="font-bold text-lg bg-gradient-to-r from-gray-300 to-gray-400 bg-clip-text text-transparent">
                     AI Chat
                   </h2>
                   <p className="text-xs text-muted-foreground">Earn USDC per message</p>
@@ -425,7 +425,7 @@ export default function ChatPage() {
                         <TrendingUp className="w-4 h-4 text-green-500" />
                         <span className="text-sm text-muted-foreground">Total Earned</span>
                       </div>
-                      <span className="text-2xl font-bold bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent" data-testid="text-total-earned-mobile">
+                      <span className="text-2xl font-bold bg-gradient-to-r from-gray-400 to-gray-500 bg-clip-text text-transparent" data-testid="text-total-earned-mobile">
                         {stats.totalEarned}
                       </span>
                     </div>
@@ -437,7 +437,7 @@ export default function ChatPage() {
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-teal-500" />
+                        <CheckCircle2 className="w-4 h-4 text-gray-400" />
                         <span className="text-sm text-muted-foreground">Successful</span>
                       </div>
                       <span className="text-2xl font-bold" data-testid="text-successful-transactions-mobile">{stats.successfulTransactions}</span>
@@ -483,7 +483,7 @@ export default function ChatPage() {
               </Button>
               <div className="lg:hidden flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-primary" />
-                <h1 className="font-semibold bg-gradient-to-r from-purple-400 to-teal-400 bg-clip-text text-transparent">
+                <h1 className="font-semibold bg-gradient-to-r from-gray-300 to-gray-400 bg-clip-text text-transparent">
                   AI Chat
                 </h1>
               </div>
@@ -510,11 +510,11 @@ export default function ChatPage() {
               <div className="mx-auto max-w-4xl px-4 md:px-6 py-6">
                 {messages.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-full min-h-[400px] space-y-6 text-center">
-                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500/20 to-teal-500/20 flex items-center justify-center border border-purple-500/20">
-                      <MessageSquare className="w-10 h-10 text-purple-400" />
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500/20 to-teal-500/20 flex items-center justify-center border border-gray-600/20">
+                      <MessageSquare className="w-10 h-10 text-gray-300" />
                     </div>
                     <div className="space-y-3">
-                      <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-teal-400 bg-clip-text text-transparent">
+                      <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-300 to-gray-400 bg-clip-text text-transparent">
                         Start a Conversation
                       </h2>
                       <p className="text-muted-foreground max-w-md text-sm md:text-base">
@@ -564,7 +564,7 @@ export default function ChatPage() {
                     onChange={(e) => setInputMessage(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder={connected && isWalletValidated ? "Type your message..." : "Connect wallet to start chatting"}
-                    className="flex-1 min-h-[52px] max-h-[200px] px-6 py-4 text-base rounded-2xl border border-border/40 bg-background/50 backdrop-blur resize-none focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 disabled:opacity-50 transition-all"
+                    className="flex-1 min-h-[52px] max-h-[200px] px-6 py-4 text-base rounded-2xl border border-border/40 bg-background/50 backdrop-blur resize-none focus:outline-none focus:ring-2 focus:ring-gray-600/50 focus:border-gray-600/50 disabled:opacity-50 transition-all"
                     disabled={!connected || !isWalletValidated || chatMutation.isPending}
                     rows={1}
                     data-testid="input-message"
@@ -573,7 +573,7 @@ export default function ChatPage() {
                     type="submit"
                     size="icon"
                     disabled={!inputMessage.trim() || !connected || !isWalletValidated || chatMutation.isPending}
-                    className="w-[52px] h-[52px] rounded-2xl flex-shrink-0 bg-gradient-to-r from-purple-500 to-teal-500 hover:from-purple-600 hover:to-teal-600 transition-all shadow-lg shadow-purple-500/25"
+                    className="w-[52px] h-[52px] rounded-2xl flex-shrink-0 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 transition-all shadow-lg shadow-gray-700/25"
                     data-testid="button-send-message"
                   >
                     {chatMutation.isPending ? (
@@ -651,7 +651,7 @@ function MessageBubble({ message, transaction }: { message: MessageWithTransacti
     <div className={`flex flex-col ${isUser ? 'items-end' : 'items-start'}`} data-testid={`message-${message.role}`}>
       {!isUser && (
         <div className="flex items-center gap-2 mb-2 ml-1">
-          <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-purple-500 to-teal-500 flex items-center justify-center">
+          <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center">
             <MessageSquare className="w-3.5 h-3.5 text-white" />
           </div>
           <span className="text-xs font-medium text-muted-foreground">AI Assistant</span>
@@ -662,7 +662,7 @@ function MessageBubble({ message, transaction }: { message: MessageWithTransacti
         <div
           className={`px-5 py-3.5 rounded-2xl shadow-sm ${
             isUser
-              ? 'bg-gradient-to-r from-purple-500 to-teal-500 text-white'
+              ? 'bg-gradient-to-r from-gray-600 to-gray-700 text-white'
               : 'bg-card/80 backdrop-blur border border-border/40'
           }`}
         >
@@ -718,7 +718,7 @@ function TransactionNotification({ transaction }: { transaction: Transaction }) 
               href={transaction.explorerUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-medium text-purple-400 hover:text-purple-300 flex items-center gap-1.5 flex-shrink-0 transition-colors"
+              className="text-xs font-medium text-gray-300 hover:text-gray-200 flex items-center gap-1.5 flex-shrink-0 transition-colors"
               data-testid="link-transaction-explorer"
             >
               View
@@ -735,7 +735,7 @@ function TypingIndicator() {
   return (
     <div className="flex items-start" data-testid="typing-indicator">
       <div className="flex items-center gap-2 mb-2">
-        <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-purple-500 to-teal-500 flex items-center justify-center">
+        <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center">
           <MessageSquare className="w-3.5 h-3.5 text-white" />
         </div>
         <span className="text-xs font-medium text-muted-foreground">AI Assistant</span>
