@@ -15,7 +15,7 @@ export default function X402Sol() {
       <div className="max-w-6xl mx-auto px-8 py-24 space-y-16">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight" data-testid="text-page-title">
-            <span className="bg-gradient-to-r from-purple-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gray-300 to-gray-300 bg-clip-text text-transparent">
               x402 Sol: The Get-as-You-Go Protocol
             </span>
           </h1>
@@ -28,35 +28,35 @@ export default function X402Sol() {
           <h2 className="text-3xl font-bold text-foreground">The Paradigm Shift</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="border-red-500/20 bg-red-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-xl text-foreground">❌ Traditional "Pay-as-You-Go"</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <ol className="space-y-3 text-muted-foreground">
                   <li className="flex gap-3">
-                    <span className="text-red-400 font-semibold">1.</span>
+                    <span className="text-gray-300 font-semibold">1.</span>
                     <span>User signs up and adds credit card</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-red-400 font-semibold">2.</span>
+                    <span className="text-gray-300 font-semibold">2.</span>
                     <span>Pre-authorization hold placed on card</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-red-400 font-semibold">3.</span>
+                    <span className="text-gray-300 font-semibold">3.</span>
                     <span>Service delivered</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-red-400 font-semibold">4.</span>
+                    <span className="text-gray-300 font-semibold">4.</span>
                     <span>Charge posted days later</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-red-400 font-semibold">5.</span>
+                    <span className="text-gray-300 font-semibold">5.</span>
                     <span>Settlement in 2-3 business days</span>
                   </li>
                 </ol>
-                <div className="pt-4 border-t border-red-500/20">
-                  <p className="text-sm font-semibold text-red-400 mb-2">Problems:</p>
+                <div className="pt-4 border-t border-gray-700/20">
+                  <p className="text-sm font-semibold text-gray-300 mb-2">Problems:</p>
                   <ul className="text-sm text-muted-foreground space-y-1">
                     <li>• Friction (signup required)</li>
                     <li>• Latency (2-3 days)</li>
@@ -67,35 +67,35 @@ export default function X402Sol() {
               </CardContent>
             </Card>
 
-            <Card className="border-teal-500/20 bg-teal-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-xl text-foreground">✅ x402Pay "Get-as-You-Go"</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <ol className="space-y-3 text-muted-foreground">
                   <li className="flex gap-3">
-                    <span className="text-teal-400 font-semibold">1.</span>
+                    <span className="text-gray-300 font-semibold">1.</span>
                     <span>Device broadcasts service offer via HTTP 402</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-teal-400 font-semibold">2.</span>
+                    <span className="text-gray-300 font-semibold">2.</span>
                     <span>User wallet auto-approves micropayment (one tap)</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-teal-400 font-semibold">3.</span>
+                    <span className="text-gray-300 font-semibold">3.</span>
                     <span><strong className="text-foreground">Service and payment happen simultaneously</strong> (sub-second)</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-teal-400 font-semibold">4.</span>
+                    <span className="text-gray-300 font-semibold">4.</span>
                     <span>Settlement is instant and final</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-teal-400 font-semibold">5.</span>
+                    <span className="text-gray-300 font-semibold">5.</span>
                     <span>No signup, no pre-authorization, no waiting</span>
                   </li>
                 </ol>
-                <div className="pt-4 border-t border-teal-500/20">
-                  <p className="text-sm font-semibold text-teal-400 mb-2">Benefits:</p>
+                <div className="pt-4 border-t border-gray-700/20">
+                  <p className="text-sm font-semibold text-gray-300 mb-2">Benefits:</p>
                   <ul className="text-sm text-muted-foreground space-y-1">
                     <li>• Zero friction (no signup)</li>
                     <li>• Instant (sub-second)</li>
@@ -111,7 +111,7 @@ export default function X402Sol() {
         <section className="space-y-8" data-testid="section-http-402">
           <h2 className="text-3xl font-bold text-foreground">HTTP 402 Payment Required</h2>
           <p className="text-lg text-muted-foreground">
-            The HTTP standard includes status code <code className="px-2 py-1 rounded bg-purple-500/10 text-purple-400 font-mono text-sm">402 Payment Required</code>, originally reserved for future digital payment systems. x402Pay brings this vision to reality:
+            The HTTP standard includes status code <code className="px-2 py-1 rounded bg-gray-800/10 text-gray-300 font-mono text-sm">402 Payment Required</code>, originally reserved for future digital payment systems. x402Pay brings this vision to reality:
           </p>
           
           <Tabs defaultValue="flow" className="w-full">
@@ -121,7 +121,7 @@ export default function X402Sol() {
             </TabsList>
             
             <TabsContent value="flow" className="mt-6">
-              <Card className="border-purple-500/20 bg-purple-500/5">
+              <Card className="border-gray-700/20 bg-gray-800/5">
                 <CardContent className="p-6">
                   <pre className="text-sm text-muted-foreground font-mono overflow-x-auto">
 {`IoT Device → User: HTTP 402 (service metadata + Solana tx template)
@@ -136,48 +136,48 @@ Device Backend → Monitors Solana, sees confirmed tx, delivers service`}
             <TabsContent value="timeline" className="mt-6">
               <div className="space-y-4">
                 <div className="flex gap-4 items-start">
-                  <div className="w-24 text-teal-400 font-mono text-sm font-semibold">T+0ms</div>
-                  <div className="flex-1 p-4 rounded-lg border border-purple-500/20 bg-purple-500/5">
+                  <div className="w-24 text-gray-300 font-mono text-sm font-semibold">T+0ms</div>
+                  <div className="flex-1 p-4 rounded-lg border border-gray-700/20 bg-gray-800/5">
                     <p className="text-foreground font-medium">Device sends 402 response with payment request</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <div className="w-24 text-teal-400 font-mono text-sm font-semibold">T+50ms</div>
-                  <div className="flex-1 p-4 rounded-lg border border-purple-500/20 bg-purple-500/5">
+                  <div className="w-24 text-gray-300 font-mono text-sm font-semibold">T+50ms</div>
+                  <div className="flex-1 p-4 rounded-lg border border-gray-700/20 bg-gray-800/5">
                     <p className="text-foreground font-medium">User wallet signs transaction</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <div className="w-24 text-teal-400 font-mono text-sm font-semibold">T+100ms</div>
-                  <div className="flex-1 p-4 rounded-lg border border-purple-500/20 bg-purple-500/5">
+                  <div className="w-24 text-gray-300 font-mono text-sm font-semibold">T+100ms</div>
+                  <div className="flex-1 p-4 rounded-lg border border-gray-700/20 bg-gray-800/5">
                     <p className="text-foreground font-medium">Transaction submitted to Solana RPC</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <div className="w-24 text-teal-400 font-mono text-sm font-semibold">T+500ms</div>
-                  <div className="flex-1 p-4 rounded-lg border border-teal-500/20 bg-teal-500/5">
+                  <div className="w-24 text-gray-300 font-mono text-sm font-semibold">T+500ms</div>
+                  <div className="flex-1 p-4 rounded-lg border border-gray-700/20 bg-gray-800/5">
                     <p className="text-foreground font-medium">Transaction confirmed (slot finalized)</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <div className="w-24 text-teal-400 font-mono text-sm font-semibold">T+600ms</div>
-                  <div className="flex-1 p-4 rounded-lg border border-teal-500/20 bg-teal-500/5">
+                  <div className="w-24 text-gray-300 font-mono text-sm font-semibold">T+600ms</div>
+                  <div className="flex-1 p-4 rounded-lg border border-gray-700/20 bg-gray-800/5">
                     <p className="text-foreground font-medium">Device backend queries Solana, sees payment</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <div className="w-24 text-blue-400 font-mono text-sm font-semibold">T+700ms</div>
-                  <div className="flex-1 p-4 rounded-lg border border-blue-500/20 bg-blue-500/5">
+                  <div className="w-24 text-gray-300 font-mono text-sm font-semibold">T+700ms</div>
+                  <div className="flex-1 p-4 rounded-lg border border-gray-700/20 bg-gray-800/5">
                     <p className="text-foreground font-medium">✅ Service delivered (vending machine dispenses, sensor sends data)</p>
                   </div>
                 </div>
               </div>
-              <div className="mt-6 p-4 rounded-lg border border-teal-500/30 bg-teal-500/10">
+              <div className="mt-6 p-4 rounded-lg border border-gray-700/30 bg-gray-800/10">
                 <p className="text-lg font-semibold text-foreground">
                   Total time: ~700ms from request to delivery
                 </p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  This is <strong className="text-teal-400">3,000x faster</strong> than credit card settlement
+                  This is <strong className="text-gray-300">3,000x faster</strong> than credit card settlement
                 </p>
               </div>
             </TabsContent>
@@ -191,16 +191,16 @@ Device Backend → Monitors Solana, sees confirmed tx, delivers service`}
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="border-purple-500/20 bg-purple-500/5 hover-elevate">
+            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Code className="w-5 h-5 text-purple-400" />
+                  <Code className="w-5 h-5 text-gray-300" />
                   InitializePayment
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <p className="text-sm text-muted-foreground">Escrows USDC from user to payment account with device validation</p>
-                <div className="pt-2 border-t border-purple-500/20">
+                <div className="pt-2 border-t border-gray-700/20">
                   <ul className="text-xs text-muted-foreground space-y-1">
                     <li>• Validates amount & device registry</li>
                     <li>• Creates payment escrow PDA</li>
@@ -211,16 +211,16 @@ Device Backend → Monitors Solana, sees confirmed tx, delivers service`}
               </CardContent>
             </Card>
 
-            <Card className="border-teal-500/20 bg-teal-500/5 hover-elevate">
+            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <CheckCircle className="w-5 h-5 text-teal-400" />
+                  <CheckCircle className="w-5 h-5 text-gray-300" />
                   ConfirmService
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <p className="text-sm text-muted-foreground">Device confirms service delivery and receives USDC payment</p>
-                <div className="pt-2 border-t border-teal-500/20">
+                <div className="pt-2 border-t border-gray-700/20">
                   <ul className="text-xs text-muted-foreground space-y-1">
                     <li>• Verifies device signature</li>
                     <li>• Checks payment not expired</li>
@@ -231,16 +231,16 @@ Device Backend → Monitors Solana, sees confirmed tx, delivers service`}
               </CardContent>
             </Card>
 
-            <Card className="border-blue-500/20 bg-blue-500/5 hover-elevate">
+            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Zap className="w-5 h-5 text-blue-400" />
+                  <Zap className="w-5 h-5 text-gray-300" />
                   RefundPayment
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <p className="text-sm text-muted-foreground">Returns USDC to user if service not delivered or payment expired</p>
-                <div className="pt-2 border-t border-blue-500/20">
+                <div className="pt-2 border-t border-gray-700/20">
                   <ul className="text-xs text-muted-foreground space-y-1">
                     <li>• Checks expiry or dispute reason</li>
                     <li>• Returns USDC to user</li>
@@ -252,7 +252,7 @@ Device Backend → Monitors Solana, sees confirmed tx, delivers service`}
             </Card>
           </div>
 
-          <Card className="border-purple-500/20 bg-purple-500/5">
+          <Card className="border-gray-700/20 bg-gray-800/5">
             <CardHeader>
               <CardTitle className="text-lg text-foreground">Rust Pseudocode Example: InitializePayment</CardTitle>
             </CardHeader>
@@ -310,52 +310,52 @@ Device Backend → Monitors Solana, sees confirmed tx, delivers service`}
           <h2 className="text-3xl font-bold text-foreground">Performance Benchmarks</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="border-teal-500/20 bg-teal-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">Transaction Confirmation</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-baseline gap-2">
-                  <div className="text-3xl font-bold text-teal-400">450ms</div>
+                  <div className="text-3xl font-bold text-gray-300">450ms</div>
                   <div className="text-sm text-muted-foreground">avg</div>
                 </div>
                 <div className="text-xs text-muted-foreground mt-1">Target: &lt;1 second ✅</div>
               </CardContent>
             </Card>
 
-            <Card className="border-purple-500/20 bg-purple-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">Compute Units</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-baseline gap-2">
-                  <div className="text-3xl font-bold text-purple-400">87k</div>
+                  <div className="text-3xl font-bold text-gray-300">87k</div>
                   <div className="text-sm text-muted-foreground">CU</div>
                 </div>
                 <div className="text-xs text-muted-foreground mt-1">Target: &lt;200k CU ✅</div>
               </CardContent>
             </Card>
 
-            <Card className="border-blue-500/20 bg-blue-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">Account Rent</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-baseline gap-2">
-                  <div className="text-3xl font-bold text-blue-400">0.0023</div>
+                  <div className="text-3xl font-bold text-gray-300">0.0023</div>
                   <div className="text-sm text-muted-foreground">SOL</div>
                 </div>
                 <div className="text-xs text-muted-foreground mt-1">Target: &lt;0.01 SOL ✅</div>
               </CardContent>
             </Card>
 
-            <Card className="border-teal-500/20 bg-teal-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">Concurrent Payments</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-baseline gap-2">
-                  <div className="text-3xl font-bold text-teal-400">12k</div>
+                  <div className="text-3xl font-bold text-gray-300">12k</div>
                   <div className="text-sm text-muted-foreground">TPS</div>
                 </div>
                 <div className="text-xs text-muted-foreground mt-1">Testnet proven</div>
@@ -370,55 +370,55 @@ Device Backend → Monitors Solana, sees confirmed tx, delivers service`}
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-purple-500/20">
+                <tr className="border-b border-gray-700/20">
                   <th className="p-4 text-foreground font-semibold">Aspect</th>
                   <th className="p-4 text-foreground font-semibold">Ethereum (ERC-20)</th>
                   <th className="p-4 text-foreground font-semibold">Solana (x402 Sol)</th>
                 </tr>
               </thead>
               <tbody className="text-muted-foreground">
-                <tr className="border-b border-purple-500/10">
+                <tr className="border-b border-gray-700/10">
                   <td className="p-4 font-medium text-foreground">TPS</td>
-                  <td className="p-4 text-red-400">15 TPS</td>
-                  <td className="p-4 text-teal-400">40,000 TPS</td>
+                  <td className="p-4 text-gray-300">15 TPS</td>
+                  <td className="p-4 text-gray-300">40,000 TPS</td>
                 </tr>
-                <tr className="border-b border-purple-500/10">
+                <tr className="border-b border-gray-700/10">
                   <td className="p-4 font-medium text-foreground">Block Time</td>
-                  <td className="p-4 text-red-400">12 seconds</td>
-                  <td className="p-4 text-teal-400">400ms</td>
+                  <td className="p-4 text-gray-300">12 seconds</td>
+                  <td className="p-4 text-gray-300">400ms</td>
                 </tr>
-                <tr className="border-b border-purple-500/10">
+                <tr className="border-b border-gray-700/10">
                   <td className="p-4 font-medium text-foreground">Finality</td>
-                  <td className="p-4 text-red-400">~15 minutes</td>
-                  <td className="p-4 text-teal-400">&lt;1 second</td>
+                  <td className="p-4 text-gray-300">~15 minutes</td>
+                  <td className="p-4 text-gray-300">&lt;1 second</td>
                 </tr>
-                <tr className="border-b border-purple-500/10">
+                <tr className="border-b border-gray-700/10">
                   <td className="p-4 font-medium text-foreground">Tx Fee</td>
-                  <td className="p-4 text-red-400">$5-$50 (gas wars)</td>
-                  <td className="p-4 text-teal-400">$0.00005</td>
+                  <td className="p-4 text-gray-300">$5-$50 (gas wars)</td>
+                  <td className="p-4 text-gray-300">$0.00005</td>
                 </tr>
-                <tr className="border-b border-purple-500/10">
+                <tr className="border-b border-gray-700/10">
                   <td className="p-4 font-medium text-foreground">Language</td>
                   <td className="p-4">Solidity</td>
-                  <td className="p-4 text-teal-400">Rust (memory-safe)</td>
+                  <td className="p-4 text-gray-300">Rust (memory-safe)</td>
                 </tr>
-                <tr className="border-b border-purple-500/10">
+                <tr className="border-b border-gray-700/10">
                   <td className="p-4 font-medium text-foreground">Minimum Payment</td>
-                  <td className="p-4 text-red-400">~$5 (due to fees)</td>
-                  <td className="p-4 text-teal-400">$0.0001</td>
+                  <td className="p-4 text-gray-300">~$5 (due to fees)</td>
+                  <td className="p-4 text-gray-300">$0.0001</td>
                 </tr>
                 <tr>
                   <td className="p-4 font-medium text-foreground">IoT Viability</td>
-                  <td className="p-4 text-red-400">❌ Too slow/expensive</td>
-                  <td className="p-4 text-teal-400">✅ Perfect fit</td>
+                  <td className="p-4 text-gray-300">❌ Too slow/expensive</td>
+                  <td className="p-4 text-gray-300">✅ Perfect fit</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div className="p-6 rounded-xl border border-teal-500/30 bg-gradient-to-br from-teal-500/10 to-purple-500/10 backdrop-blur-sm">
+          <div className="p-6 rounded-xl border border-gray-700/30 bg-gradient-to-br from-gray-400/10 to-gray-400/10 backdrop-blur-sm">
             <p className="text-lg font-semibold text-foreground mb-2">
-              <Clock className="w-5 h-5 inline-block mr-2 text-teal-400" />
+              <Clock className="w-5 h-5 inline-block mr-2 text-gray-300" />
               Conclusion
             </p>
             <p className="text-muted-foreground">
@@ -427,14 +427,14 @@ Device Backend → Monitors Solana, sees confirmed tx, delivers service`}
           </div>
         </section>
 
-        <div className="flex justify-between pt-8 border-t border-purple-500/10">
+        <div className="flex justify-between pt-8 border-t border-gray-700/10">
           <Link href="/solution">
             <Button variant="ghost" className="hover-elevate" data-testid="button-back">
               ← Back to Solution
             </Button>
           </Link>
           <Link href="/device-identity">
-            <Button variant="ghost" className="text-purple-400 hover-elevate" data-testid="button-next">
+            <Button variant="ghost" className="text-gray-300 hover-elevate" data-testid="button-next">
               Next: Device Identity
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>

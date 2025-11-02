@@ -2,15 +2,16 @@
 
 ## Design Approach
 
-**Selected Approach:** Reference-Based (Solana, Stripe Docs, Ethereum Foundation)
+**Selected Approach:** Monochromatic Dark Professional Theme
 
-**Rationale:** Professional documentation site showcasing blockchain technology requires the credibility of enterprise-grade design systems while maintaining visual distinctiveness. Drawing from Solana's gradient aesthetics, Stripe's documentation clarity, and Ethereum's technical authority.
+**Rationale:** Professional documentation site showcasing blockchain technology requires the credibility of enterprise-grade design systems. Using a sophisticated dark blackish-gray monochromatic palette to create a neutral, focused environment that emphasizes content over decoration.
 
 **Key Principles:**
-- Technical sophistication through restrained visual treatment
+- Technical sophistication through minimalist grayscale aesthetic
 - Deep hierarchies for complex documentation
-- Gradient accents as wayfinding, not decoration
+- Subtle gray gradients for depth, not distraction
 - Trust through consistent, predictable patterns
+- Dark theme optimized for extended reading
 
 ---
 
@@ -66,35 +67,36 @@
 
 ### Hero Section
 - Full viewport height: min-h-screen
-- Large hero image: Abstract Solana-themed visualization (purple-teal gradient geometric patterns, network nodes, IoT device imagery)
-- Image treatment: Subtle overlay gradient (dark at bottom)
+- Background: Dark gradient from-black via-zinc-900/50 to-black
+- Title: Gray gradient from-gray-300 via-gray-200 to-gray-400
 - Content positioning: Centered vertically, max-w-4xl
-- Elements stack: Logo mark, headline, subheadline (text-xl opacity-80), dual CTAs
-- CTA buttons: Primary (gradient background) + Secondary (outline)
-- Button backgrounds: Blurred backdrop (backdrop-blur-md) with semi-transparent fill
+- Elements stack: Logo mark, headline, subheadline (text-xl opacity-80), CTA
+- CTA buttons: Gray gradient background (from-gray-700 to-gray-800)
+- Button backgrounds: Hover elevation system, no explicit hover colors
 - Padding: px-8, py-32
 
 ### Executive Summary Section
 - 2-column layout on desktop: Left (prose content), Right (key metrics cards)
-- Background: Subtle gradient from deep black to dark purple
-- Metrics cards: 2x2 grid, rounded-xl, p-6, gradient borders
-- Each metric: Large number (text-4xl), label (text-sm), icon
+- Background: Dark neutral gradient
+- Metrics cards: 2x2 grid, rounded-xl, p-6, gray borders (border-gray-700/40)
+- Feature cards: bg-gray-800/20 backdrop-blur-sm
+- Each metric: Large number (text-4xl), label (text-sm), gray icon (text-gray-300)
 - Padding: py-24, px-8 md:px-12
 
 ### Technical Documentation Sections
 - Single column max-w-4xl centered
-- Section header with gradient text effect
-- Content blocks with p-8, rounded-xl, subtle border
-- Code blocks: Dark background, syntax highlighting placeholder, rounded-lg, p-6
-- Diagrams/illustrations: Full-width within container, rounded-lg, border
-- Side notes: Accent border-left with pl-6
+- Section header with gray gradient text effect
+- Content blocks with p-8, rounded-xl, subtle gray border
+- Code blocks: Dark background, grayscale syntax highlighting, rounded-lg, p-6
+- Diagrams/illustrations: Full-width within container, rounded-lg, gray border
+- Side notes: Gray border-left with pl-6
 - Spacing between blocks: space-y-8
 
 ### x402 Protocol Architecture Section
 - 3-column feature grid showcasing protocol layers
-- Cards: h-full, p-8, rounded-xl, gradient border on hover
-- Icon (electric blue accent), title, description
-- Background: Deep gradient from black to navy
+- Cards: h-full, p-8, rounded-xl, gray border on hover
+- Icon (light gray text-gray-300), title, description
+- Background: Dark neutral gradient
 - Grid gap: gap-8
 
 ### Device Identity System Section
@@ -114,54 +116,60 @@
 ### Tokenomics Section
 - 2-column split: Left (pie chart/allocation visual), Right (breakdown list)
 - Allocation cards: Icon, percentage (text-3xl), category, description
-- Gradient progress bars showing distribution
-- Total supply callout: Centered, large text with gradient
-- Background: Darkest section with teal accent gradient
+- Grayscale progress bars showing distribution
+- Total supply callout: Centered, large text with gray gradient
+- Background: Darkest section with neutral gradient
 - Padding: py-24
 
 ### Roadmap Section
-- Vertical timeline with gradient connecting line
+- Vertical timeline with gray connecting line
 - Milestone cards: Alternating left/right layout
 - Each milestone: Quarter, title, description, status badge
-- Status badges: Completed (teal), In Progress (blue), Planned (purple)
-- Timeline line: Gradient from purple to teal top-to-bottom
+- Status badges: Completed (light gray), In Progress (medium gray), Planned (dark gray)
+- Timeline line: Subtle gray gradient top-to-bottom
 - Padding: py-24
 
 ### Footer
 - 4-column grid on desktop: Company, Product, Resources, Social
-- Newsletter signup form: Email input + gradient submit button
-- Network status badge: "Solana Devnet" pill
+- Newsletter signup form: Email input + gray gradient submit button
+- Network status badge: "Solana Devnet" pill with gray styling
 - Bottom bar: Copyright, legal links, back-to-top button
-- Background: Deepest black with subtle top border gradient
+- Background: Deepest black with subtle gray top border
 - Padding: pt-16 pb-8
 
 ---
 
-## Images
+## Color Palette
 
-**Hero Image:**
-- Abstract Solana-themed visualization featuring purple-to-teal gradient geometric patterns overlaid with subtle IoT device network nodes
-- Dimensions: 1920x1080 minimum
-- Treatment: Dark gradient overlay (transparent to rgba(0,0,0,0.6) from top to bottom)
-- Purpose: Establish premium tech aesthetic immediately
+**Theme:** Monochromatic Dark (Blackish-Gray)
 
-**Executive Summary Visual:**
-- Network topology diagram showing x402Pay ecosystem connections
-- Style: Wireframe aesthetic with glowing nodes
-- Dimensions: 800x600
-- Placement: Right column of executive summary section
+**Primary Colors:**
+- Background: Very dark gray (0 0% 4%)
+- Card: Dark gray (0 0% 6%)
+- Sidebar: Dark gray (0 0% 8%)
+- Borders: Medium-dark gray (0 0% 15%)
 
-**Protocol Architecture Diagram:**
-- Layered architecture visualization (hardware → protocol → application)
-- Style: Technical schematic with gradient accents
-- Dimensions: 1200x800
-- Placement: Full-width in x402 Protocol section
+**Text Colors:**
+- Primary text: Light gray (0 0% 95%)
+- Secondary text: Medium gray (0 0% 60%)
 
-**Device Identity Illustration:**
-- Conceptual rendering of IoT device with security layer visualization
-- Style: Semi-transparent overlay effects, blue-purple gradient
-- Dimensions: 600x600
-- Placement: Left side of Device Identity section
+**Accent Colors:**
+- Primary accent: Light gray (0 0% 70%) - used for buttons, highlights
+- Icon colors: text-gray-300
+- Borders: border-gray-700/40
+- Backgrounds: bg-gray-800/20
+
+**Gradients:**
+- Title gradients: from-gray-300 via-gray-200 to-gray-400
+- Button gradients: from-gray-700 to-gray-800
+- Avatar/icon gradients: from-gray-600 to-gray-700
+- Page backgrounds: from-black via-zinc-900/50 to-black
+
+**Images:**
+Currently text-only design. Future imagery should use:
+- Monochromatic wireframe aesthetics
+- Grayscale technical schematics
+- Minimal color, maximum clarity
 
 ---
 
@@ -196,18 +204,18 @@
 - Gradient underline follows scroll position in navigation
 
 **Buttons:**
-- Primary: Gradient fill (purple-to-teal), white text, rounded-full
-- Secondary: Gradient border, transparent fill, gradient text
-- No additional hover states when on images (blurred backgrounds handle visibility)
+- Primary: Gray gradient fill (from-gray-700 to-gray-800), light text, uses hover-elevate system
+- Secondary: Gray border, transparent fill, gray text
+- Hover states: Automatic via elevation system, no manual hover colors needed
 
 **Cards:**
-- Subtle gradient border animation on hover
-- Gentle scale transform (scale-[1.02])
-- Glow effect on technical feature cards
+- Gray borders (border-gray-700/40) with bg-gray-800/20
+- Uses hover-elevate system for interactions
+- No explicit glow effects, relies on subtle elevation changes
 
 **Code Blocks:**
 - Copy button appears on hover
-- Syntax highlighting (purple for keywords, teal for strings, blue for functions)
+- Syntax highlighting using neutral grayscale tones
 - Line numbers in reduced opacity
 
 ---
@@ -217,11 +225,11 @@
 - Semantic HTML structure: `<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`
 - Skip to content link for keyboard users
 - ARIA labels for all icon buttons and navigation
-- Focus indicators: Gradient outline matching brand
+- Focus indicators: Gray outline (ring-gray-600)
 - Contrast ratios exceed WCAG AA on dark backgrounds
 - Alt text for all images and diagrams
 - Keyboard navigation for tabbed interfaces
 
 ---
 
-This design establishes x402Pay as a sophisticated blockchain platform through premium dark aesthetics, clear information architecture, and strategic use of Solana's signature gradients. The whitepaper content flows naturally from high-level vision (hero, executive summary) through technical depth (protocol, SDK) to future outlook (tokenomics, roadmap), creating a comprehensive narrative for investors, partners, and developers.
+This design establishes x402Pay as a sophisticated blockchain platform through premium monochromatic dark aesthetics, clear information architecture, and subtle grayscale hierarchy. The neutral color scheme allows content and functionality to take center stage while maintaining a professional, focused environment. The whitepaper content flows naturally from high-level vision (hero, executive summary) through technical depth (protocol, SDK) to future outlook (tokenomics, roadmap), creating a comprehensive narrative for investors, partners, and developers.

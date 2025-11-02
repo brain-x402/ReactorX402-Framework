@@ -14,7 +14,7 @@ export default function Roadmap() {
       <div className="max-w-5xl mx-auto px-8 py-24 space-y-16">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight" data-testid="text-page-title">
-            <span className="bg-gradient-to-r from-purple-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gray-300 to-gray-300 bg-clip-text text-transparent">
               Roadmap
             </span>
           </h1>
@@ -24,17 +24,17 @@ export default function Roadmap() {
         </div>
 
         <div className="relative space-y-12" data-testid="section-timeline">
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-teal-500 to-blue-500"></div>
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gray-400 via-gray-400 to-gray-400"></div>
 
           <div className="relative pl-20">
-            <div className="absolute left-5 top-4 w-6 h-6 rounded-full bg-teal-500 border-4 border-black flex items-center justify-center">
+            <div className="absolute left-5 top-4 w-6 h-6 rounded-full bg-gray-800 border-4 border-black flex items-center justify-center">
               <CheckCircle2 className="w-4 h-4 text-black" />
             </div>
-            <Card className="border-teal-500/30 bg-teal-500/10">
+            <Card className="border-gray-700/30 bg-gray-800/10">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-semibold text-teal-400">Q1 2026</span>
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-teal-500/20 text-teal-400 border border-teal-500/30">
+                  <span className="text-sm font-semibold text-gray-300">Q1 2026</span>
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-800/20 text-gray-300 border border-gray-700/30">
                     Completed
                   </span>
                 </div>
@@ -46,11 +46,11 @@ export default function Roadmap() {
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex gap-2 items-start">
-                    <CheckCircle2 className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>Devnet deployment and testing</span>
                   </li>
                   <li className="flex gap-2 items-start">
-                    <CheckCircle2 className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>Security audit (Neodyme)</span>
                   </li>
                   <li className="flex gap-2 items-start">
@@ -71,14 +71,14 @@ export default function Roadmap() {
           </div>
 
           <div className="relative pl-20">
-            <div className="absolute left-5 top-4 w-6 h-6 rounded-full bg-blue-500 border-4 border-black flex items-center justify-center">
+            <div className="absolute left-5 top-4 w-6 h-6 rounded-full bg-gray-800 border-4 border-black flex items-center justify-center">
               <Clock className="w-4 h-4 text-black" />
             </div>
-            <Card className="border-blue-500/30 bg-blue-500/10">
+            <Card className="border-gray-700/30 bg-gray-800/10">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-semibold text-blue-400">Q2 2026</span>
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                  <span className="text-sm font-semibold text-gray-300">Q2 2026</span>
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-800/20 text-gray-300 border border-gray-700/30">
                     In Progress
                   </span>
                 </div>
@@ -90,19 +90,19 @@ export default function Roadmap() {
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>SDK releases (Python, Rust, JavaScript)</span>
                   </li>
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>100+ device registrations (vending, parking, EV chargers)</span>
                   </li>
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>Integration with Phantom/Solflare wallets (WalletConnect support)</span>
                   </li>
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>Developer hackathon ($100k prize pool)</span>
                   </li>
                 </ul>
@@ -111,14 +111,14 @@ export default function Roadmap() {
           </div>
 
           <div className="relative pl-20">
-            <div className="absolute left-5 top-4 w-6 h-6 rounded-full bg-purple-500 border-4 border-black flex items-center justify-center">
+            <div className="absolute left-5 top-4 w-6 h-6 rounded-full bg-gray-800 border-4 border-black flex items-center justify-center">
               <Circle className="w-3 h-3 text-black" />
             </div>
-            <Card className="border-purple-500/30 bg-purple-500/10">
+            <Card className="border-gray-700/30 bg-gray-800/10">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-semibold text-purple-400">Q3 2026</span>
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+                  <span className="text-sm font-semibold text-gray-300">Q3 2026</span>
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-800/20 text-gray-300 border border-gray-700/30">
                     Planned
                   </span>
                 </div>
@@ -130,15 +130,15 @@ export default function Roadmap() {
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>Partnership with vending machine manufacturer (10,000 unit deployment)</span>
                   </li>
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>Smart city pilot (Miami, Austin, or Dubai)</span>
                   </li>
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>Layer 2 optimizations (compressed accounts for 10x cost reduction)</span>
                   </li>
                 </ul>
@@ -147,14 +147,14 @@ export default function Roadmap() {
           </div>
 
           <div className="relative pl-20">
-            <div className="absolute left-5 top-4 w-6 h-6 rounded-full bg-teal-500 border-4 border-black flex items-center justify-center">
+            <div className="absolute left-5 top-4 w-6 h-6 rounded-full bg-gray-800 border-4 border-black flex items-center justify-center">
               <Circle className="w-3 h-3 text-black" />
             </div>
-            <Card className="border-teal-500/30 bg-teal-500/10">
+            <Card className="border-gray-700/30 bg-gray-800/10">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-semibold text-teal-400">Q4 2026</span>
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-teal-500/20 text-teal-400 border border-teal-500/30">
+                  <span className="text-sm font-semibold text-gray-300">Q4 2026</span>
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-800/20 text-gray-300 border border-gray-700/30">
                     Planned
                   </span>
                 </div>
@@ -166,15 +166,15 @@ export default function Roadmap() {
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>1M+ registered devices</span>
                   </li>
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>Cross-chain bridge (USDC on Ethereum → Solana)</span>
                   </li>
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>Decentralized governance activation (DAO launch)</span>
                   </li>
                 </ul>
@@ -183,14 +183,14 @@ export default function Roadmap() {
           </div>
 
           <div className="relative pl-20">
-            <div className="absolute left-5 top-4 w-6 h-6 rounded-full bg-blue-500 border-4 border-black flex items-center justify-center">
+            <div className="absolute left-5 top-4 w-6 h-6 rounded-full bg-gray-800 border-4 border-black flex items-center justify-center">
               <Circle className="w-3 h-3 text-black" />
             </div>
-            <Card className="border-blue-500/30 bg-blue-500/10">
+            <Card className="border-gray-700/30 bg-gray-800/10">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-semibold text-blue-400">2027+</span>
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                  <span className="text-sm font-semibold text-gray-300">2027+</span>
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-800/20 text-gray-300 border border-gray-700/30">
                     Vision
                   </span>
                 </div>
@@ -202,19 +202,19 @@ export default function Roadmap() {
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>10M+ devices across 50 countries</span>
                   </li>
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>Autonomous vehicle integrations (Tesla, Waymo API)</span>
                   </li>
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>Energy grid integration (peer-to-peer energy trading)</span>
                   </li>
                   <li className="flex gap-2 items-start">
-                    <Circle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <Circle className="w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" />
                     <span>X402 listing on major exchanges (Coinbase, Binance)</span>
                   </li>
                 </ul>
@@ -227,42 +227,42 @@ export default function Roadmap() {
           <h2 className="text-3xl font-bold text-foreground">Key Targets</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="border-teal-500/20 bg-teal-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">Year 1 (2026)</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="text-4xl font-bold text-teal-400">100K</div>
+                <div className="text-4xl font-bold text-gray-300">100K</div>
                 <p className="text-sm text-muted-foreground">Registered devices</p>
-                <div className="pt-2 border-t border-teal-500/20 space-y-1 text-xs text-muted-foreground">
+                <div className="pt-2 border-t border-gray-700/20 space-y-1 text-xs text-muted-foreground">
                   <div>• 10M transactions</div>
                   <div>• $10M transaction volume</div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-purple-500/20 bg-purple-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">Year 2 (2027)</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="text-4xl font-bold text-purple-400">1M</div>
+                <div className="text-4xl font-bold text-gray-300">1M</div>
                 <p className="text-sm text-muted-foreground">Registered devices</p>
-                <div className="pt-2 border-t border-purple-500/20 space-y-1 text-xs text-muted-foreground">
+                <div className="pt-2 border-t border-gray-700/20 space-y-1 text-xs text-muted-foreground">
                   <div>• 500M transactions</div>
                   <div>• $500M transaction volume</div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-blue-500/20 bg-blue-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">Year 3 (2028)</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="text-4xl font-bold text-blue-400">10M</div>
+                <div className="text-4xl font-bold text-gray-300">10M</div>
                 <p className="text-sm text-muted-foreground">Registered devices</p>
-                <div className="pt-2 border-t border-blue-500/20 space-y-1 text-xs text-muted-foreground">
+                <div className="pt-2 border-t border-gray-700/20 space-y-1 text-xs text-muted-foreground">
                   <div>• Break-even with fee revenue</div>
                   <div>• Global market leadership</div>
                 </div>
@@ -271,14 +271,14 @@ export default function Roadmap() {
           </div>
         </section>
 
-        <div className="flex justify-between pt-8 border-t border-purple-500/10">
+        <div className="flex justify-between pt-8 border-t border-gray-700/10">
           <Link href="/tokenomics">
             <Button variant="ghost" className="hover-elevate" data-testid="button-back">
               ← Back to Tokenomics
             </Button>
           </Link>
           <Link href="/chat">
-            <Button variant="ghost" className="text-purple-400 hover-elevate" data-testid="button-next">
+            <Button variant="ghost" className="text-gray-300 hover-elevate" data-testid="button-next">
               Try Demo
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>

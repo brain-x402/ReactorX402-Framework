@@ -14,7 +14,7 @@ export default function Solution() {
       <div className="max-w-6xl mx-auto px-8 py-24 space-y-16">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight" data-testid="text-page-title">
-            <span className="bg-gradient-to-r from-purple-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gray-300 to-gray-300 bg-clip-text text-transparent">
               Solution Overview
             </span>
           </h1>
@@ -26,7 +26,7 @@ export default function Solution() {
         <section className="space-y-8" data-testid="section-architecture">
           <h2 className="text-3xl font-bold text-foreground">High-Level Architecture</h2>
           
-          <div className="p-8 rounded-xl border border-purple-500/20 bg-purple-500/5 backdrop-blur-sm">
+          <div className="p-8 rounded-xl border border-gray-700/20 bg-gray-800/5 backdrop-blur-sm">
             <pre className="text-sm text-muted-foreground font-mono overflow-x-auto">
 {`┌─────────────────────────────────────────────────────────────┐
 │                    x402Pay Ecosystem                        │
@@ -58,10 +58,10 @@ export default function Solution() {
           <h2 className="text-3xl font-bold text-foreground">Component Breakdown</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="border-purple-500/20 bg-purple-500/5 hover-elevate">
+            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Server className="w-5 h-5 text-purple-400" />
+                  <Server className="w-5 h-5 text-gray-300" />
                   x402 Sol Program
                 </CardTitle>
               </CardHeader>
@@ -71,25 +71,25 @@ export default function Solution() {
                 </p>
                 <ul className="space-y-1 text-sm text-muted-foreground">
                   <li className="flex gap-2">
-                    <span className="text-purple-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>Escrows USDC, validates device signatures</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-purple-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>Releases funds atomically</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-purple-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>Sub-500ms execution time</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="border-teal-500/20 bg-teal-500/5 hover-elevate">
+            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Database className="w-5 h-5 text-teal-400" />
+                  <Database className="w-5 h-5 text-gray-300" />
                   Device Registry
                 </CardTitle>
               </CardHeader>
@@ -99,25 +99,25 @@ export default function Solution() {
                 </p>
                 <ul className="space-y-1 text-sm text-muted-foreground">
                   <li className="flex gap-2">
-                    <span className="text-teal-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>Reputation scores based on transaction history</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-teal-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>Slashing conditions for fraudulent devices</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-teal-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>On-chain verifiable credentials</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="border-blue-500/20 bg-blue-500/5 hover-elevate">
+            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Shield className="w-5 h-5 text-blue-400" />
+                  <Shield className="w-5 h-5 text-gray-300" />
                   Payment Validator Nodes
                 </CardTitle>
               </CardHeader>
@@ -127,25 +127,25 @@ export default function Solution() {
                 </p>
                 <ul className="space-y-1 text-sm text-muted-foreground">
                   <li className="flex gap-2">
-                    <span className="text-blue-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>Submit transaction proofs to x402 Sol program</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-blue-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>Earn X402 rewards for honest validation</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-blue-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>Distributed globally for low latency</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="border-purple-500/20 bg-purple-500/5 hover-elevate">
+            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Zap className="w-5 h-5 text-purple-400" />
+                  <Zap className="w-5 h-5 text-gray-300" />
                   USDC Treasury
                 </CardTitle>
               </CardHeader>
@@ -155,15 +155,15 @@ export default function Solution() {
                 </p>
                 <ul className="space-y-1 text-sm text-muted-foreground">
                   <li className="flex gap-2">
-                    <span className="text-purple-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>Automated USDC↔SOL conversion for gas fees</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-purple-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>Emergency pause mechanisms</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-purple-400">•</span>
+                    <span className="text-gray-300">•</span>
                     <span>SPL token standard integration</span>
                   </li>
                 </ul>
@@ -178,56 +178,56 @@ export default function Solution() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-purple-500/20">
+                <tr className="border-b border-gray-700/20">
                   <th className="p-4 text-foreground font-semibold">Requirement</th>
                   <th className="p-4 text-foreground font-semibold">Why It Matters</th>
                   <th className="p-4 text-foreground font-semibold">Solana Solution</th>
                 </tr>
               </thead>
               <tbody className="text-muted-foreground">
-                <tr className="border-b border-purple-500/10">
+                <tr className="border-b border-gray-700/10">
                   <td className="p-4 font-medium text-foreground">Sub-second Finality</td>
                   <td className="p-4">Vending machines can't wait 15 seconds</td>
-                  <td className="p-4 text-teal-400">400ms slots, optimistic concurrency</td>
+                  <td className="p-4 text-gray-300">400ms slots, optimistic concurrency</td>
                 </tr>
-                <tr className="border-b border-purple-500/10">
+                <tr className="border-b border-gray-700/10">
                   <td className="p-4 font-medium text-foreground">Low Fees</td>
                   <td className="p-4">$0.01 transactions need &lt;$0.001 fees</td>
-                  <td className="p-4 text-teal-400">$0.00005 average transaction cost</td>
+                  <td className="p-4 text-gray-300">$0.00005 average transaction cost</td>
                 </tr>
-                <tr className="border-b border-purple-500/10">
+                <tr className="border-b border-gray-700/10">
                   <td className="p-4 font-medium text-foreground">High Throughput</td>
                   <td className="p-4">1M devices × 10 tx/day = 10M daily tx</td>
-                  <td className="p-4 text-teal-400">40,000+ TPS proven capacity</td>
+                  <td className="p-4 text-gray-300">40,000+ TPS proven capacity</td>
                 </tr>
-                <tr className="border-b border-purple-500/10">
+                <tr className="border-b border-gray-700/10">
                   <td className="p-4 font-medium text-foreground">Stable Asset Support</td>
                   <td className="p-4">Vendors need predictable revenue</td>
-                  <td className="p-4 text-teal-400">Native SPL-USDC with Circle partnership</td>
+                  <td className="p-4 text-gray-300">Native SPL-USDC with Circle partnership</td>
                 </tr>
-                <tr className="border-b border-purple-500/10">
+                <tr className="border-b border-gray-700/10">
                   <td className="p-4 font-medium text-foreground">Developer Ecosystem</td>
                   <td className="p-4">Need audited frameworks and tooling</td>
-                  <td className="p-4 text-teal-400">Anchor framework, 10K+ developers</td>
+                  <td className="p-4 text-gray-300">Anchor framework, 10K+ developers</td>
                 </tr>
                 <tr>
                   <td className="p-4 font-medium text-foreground">Institutional Adoption</td>
                   <td className="p-4">Enterprises need credible infrastructure</td>
-                  <td className="p-4 text-teal-400">Visa, Shopify, DRW partnerships</td>
+                  <td className="p-4 text-gray-300">Visa, Shopify, DRW partnerships</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        <div className="flex justify-between pt-8 border-t border-purple-500/10">
+        <div className="flex justify-between pt-8 border-t border-gray-700/10">
           <Link href="/introduction">
             <Button variant="ghost" className="hover-elevate" data-testid="button-back">
               ← Back to Introduction
             </Button>
           </Link>
           <Link href="/x402-sol">
-            <Button variant="ghost" className="text-purple-400 hover-elevate" data-testid="button-next">
+            <Button variant="ghost" className="text-gray-300 hover-elevate" data-testid="button-next">
               Next: x402 Sol Protocol
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>

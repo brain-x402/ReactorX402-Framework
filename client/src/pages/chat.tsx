@@ -246,7 +246,7 @@ export default function ChatPage() {
                 className="gap-1.5"
                 data-testid="badge-network-sidebar"
               >
-                <span className={`w-1.5 h-1.5 rounded-full ${networkInfo.network === "mainnet" ? "bg-orange-500" : "bg-green-500"}`} />
+                <span className={`w-1.5 h-1.5 rounded-full ${networkInfo.network === "mainnet" ? "bg-gray-500" : "bg-gray-400"}`} />
                 {networkInfo.network === "mainnet" ? "Mainnet" : "Devnet"}
               </Badge>
             </div>
@@ -298,7 +298,7 @@ export default function ChatPage() {
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-green-500" />
+                    <TrendingUp className="w-4 h-4 text-gray-400" />
                     <span className="text-sm text-muted-foreground">Total Earned</span>
                   </div>
                   <span className="text-2xl font-bold bg-gradient-to-r from-gray-400 to-gray-500 bg-clip-text text-transparent" data-testid="text-total-earned">
@@ -370,7 +370,7 @@ export default function ChatPage() {
                     variant={networkInfo.network === "mainnet" ? "destructive" : "outline"} 
                     className="gap-1.5"
                   >
-                    <span className={`w-1.5 h-1.5 rounded-full ${networkInfo.network === "mainnet" ? "bg-orange-500" : "bg-green-500"}`} />
+                    <span className={`w-1.5 h-1.5 rounded-full ${networkInfo.network === "mainnet" ? "bg-gray-500" : "bg-gray-400"}`} />
                     {networkInfo.network === "mainnet" ? "Mainnet" : "Devnet"}
                   </Badge>
                 </div>
@@ -422,7 +422,7 @@ export default function ChatPage() {
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <TrendingUp className="w-4 h-4 text-green-500" />
+                        <TrendingUp className="w-4 h-4 text-gray-400" />
                         <span className="text-sm text-muted-foreground">Total Earned</span>
                       </div>
                       <span className="text-2xl font-bold bg-gradient-to-r from-gray-400 to-gray-500 bg-clip-text text-transparent" data-testid="text-total-earned-mobile">
@@ -493,7 +493,7 @@ export default function ChatPage() {
                   className="gap-1.5 hidden lg:flex"
                   data-testid="badge-network-header"
                 >
-                  <span className={`w-1.5 h-1.5 rounded-full ${networkInfo.network === "mainnet" ? "bg-orange-500" : "bg-green-500"}`} />
+                  <span className={`w-1.5 h-1.5 rounded-full ${networkInfo.network === "mainnet" ? "bg-gray-500" : "bg-gray-400"}`} />
                   {networkInfo.network === "mainnet" ? "Mainnet - Real USDC" : "Devnet"}
                 </Badge>
               )}
@@ -510,7 +510,7 @@ export default function ChatPage() {
               <div className="mx-auto max-w-4xl px-4 md:px-6 py-6">
                 {messages.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-full min-h-[400px] space-y-6 text-center">
-                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500/20 to-teal-500/20 flex items-center justify-center border border-gray-600/20">
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-gray-400/20 to-gray-400/20 flex items-center justify-center border border-gray-600/20">
                       <MessageSquare className="w-10 h-10 text-gray-300" />
                     </div>
                     <div className="space-y-3">
@@ -523,7 +523,7 @@ export default function ChatPage() {
                       {connected && isWalletValidated && (
                         <div className="pt-4">
                           <Badge variant="outline" className="gap-2">
-                            <CheckCircle2 className="w-3 h-3 text-green-500" />
+                            <CheckCircle2 className="w-3 h-3 text-gray-400" />
                             Wallet Connected
                           </Badge>
                         </div>
@@ -612,7 +612,7 @@ export default function ChatPage() {
         <AlertDialogContent data-testid="dialog-mainnet-warning">
           <AlertDialogHeader>
             <AlertDialogTitle className="flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-orange-500" />
+              <AlertTriangle className="w-5 h-5 text-gray-400" />
               Mainnet Mode - Real Money
             </AlertDialogTitle>
             <AlertDialogDescription asChild>
@@ -688,8 +688,8 @@ function TransactionNotification({ transaction }: { transaction: Transaction }) 
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             {transaction.status === "success" ? (
-              <div className="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center">
-                <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
+              <div className="w-8 h-8 rounded-lg bg-gray-400/10 flex items-center justify-center">
+                <CheckCircle2 className="w-4 h-4 text-gray-400 flex-shrink-0" />
               </div>
             ) : transaction.status === "failed" ? (
               <div className="w-8 h-8 rounded-lg bg-destructive/10 flex items-center justify-center">

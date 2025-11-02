@@ -14,7 +14,7 @@ export default function ExecutiveSummary() {
       <div className="max-w-6xl mx-auto px-8 py-24 space-y-16">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight" data-testid="text-page-title">
-            <span className="bg-gradient-to-r from-purple-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gray-300 to-gray-300 bg-clip-text text-transparent">
               Executive Summary
             </span>
           </h1>
@@ -32,7 +32,7 @@ export default function ExecutiveSummary() {
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Card className="border-red-500/20 bg-red-500/5">
+                <Card className="border-gray-700/20 bg-gray-800/5">
                   <CardHeader>
                     <CardTitle className="text-lg text-foreground">High Transaction Fees</CardTitle>
                   </CardHeader>
@@ -41,7 +41,7 @@ export default function ExecutiveSummary() {
                   </CardContent>
                 </Card>
                 
-                <Card className="border-red-500/20 bg-red-500/5">
+                <Card className="border-gray-700/20 bg-gray-800/5">
                   <CardHeader>
                     <CardTitle className="text-lg text-foreground">Settlement Latency</CardTitle>
                   </CardHeader>
@@ -50,7 +50,7 @@ export default function ExecutiveSummary() {
                   </CardContent>
                 </Card>
                 
-                <Card className="border-red-500/20 bg-red-500/5">
+                <Card className="border-gray-700/20 bg-gray-800/5">
                   <CardHeader>
                     <CardTitle className="text-lg text-foreground">Pre-funding Requirements</CardTitle>
                   </CardHeader>
@@ -59,7 +59,7 @@ export default function ExecutiveSummary() {
                   </CardContent>
                 </Card>
                 
-                <Card className="border-red-500/20 bg-red-500/5">
+                <Card className="border-gray-700/20 bg-gray-800/5">
                   <CardHeader>
                     <CardTitle className="text-lg text-foreground">Limited Programmability</CardTitle>
                   </CardHeader>
@@ -73,36 +73,36 @@ export default function ExecutiveSummary() {
             <section className="space-y-6" data-testid="section-solution">
               <h2 className="text-3xl font-bold text-foreground">The Solution</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">x402Pay</strong> is a Solana-native decentralized payment infrastructure purpose-built for the IoT economy. We introduce the <strong className="text-teal-400">x402 Sol protocol</strong> — a revolutionary "get-as-you-go" paradigm that enables:
+                <strong className="text-foreground">x402Pay</strong> is a Solana-native decentralized payment infrastructure purpose-built for the IoT economy. We introduce the <strong className="text-gray-300">x402 Sol protocol</strong> — a revolutionary "get-as-you-go" paradigm that enables:
               </p>
               
               <div className="space-y-4">
-                <div className="flex gap-4 p-4 rounded-lg border border-teal-500/20 bg-teal-500/5">
-                  <Zap className="w-6 h-6 text-teal-400 flex-shrink-0 mt-1" />
+                <div className="flex gap-4 p-4 rounded-lg border border-gray-700/20 bg-gray-800/5">
+                  <Zap className="w-6 h-6 text-gray-300 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Instant Service Delivery</h3>
                     <p className="text-muted-foreground">Devices/users receive services immediately, with sub-second payment settlement</p>
                   </div>
                 </div>
                 
-                <div className="flex gap-4 p-4 rounded-lg border border-blue-500/20 bg-blue-500/5">
-                  <DollarSign className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
+                <div className="flex gap-4 p-4 rounded-lg border border-gray-700/20 bg-gray-800/5">
+                  <DollarSign className="w-6 h-6 text-gray-300 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Zero Pre-funding</h3>
                     <p className="text-muted-foreground">No subscriptions or prepaid balances required — pay only for what you consume</p>
                   </div>
                 </div>
                 
-                <div className="flex gap-4 p-4 rounded-lg border border-purple-500/20 bg-purple-500/5">
-                  <TrendingUp className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
+                <div className="flex gap-4 p-4 rounded-lg border border-gray-700/20 bg-gray-800/5">
+                  <TrendingUp className="w-6 h-6 text-gray-300 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Negligible Fees</h3>
                     <p className="text-muted-foreground">Solana's ~$0.00005 transaction costs enable true micropayments</p>
                   </div>
                 </div>
                 
-                <div className="flex gap-4 p-4 rounded-lg border border-teal-500/20 bg-teal-500/5">
-                  <Users className="w-6 h-6 text-teal-400 flex-shrink-0 mt-1" />
+                <div className="flex gap-4 p-4 rounded-lg border border-gray-700/20 bg-gray-800/5">
+                  <Users className="w-6 h-6 text-gray-300 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">40,000 TPS Scalability</h3>
                     <p className="text-muted-foreground">Handles millions of concurrent IoT transactions without congestion</p>
@@ -113,30 +113,30 @@ export default function ExecutiveSummary() {
 
             <section className="space-y-6" data-testid="section-cta">
               <h2 className="text-3xl font-bold text-foreground">Investment Opportunity</h2>
-              <div className="p-8 rounded-xl border border-purple-500/30 bg-gradient-to-br from-purple-500/10 to-teal-500/10 backdrop-blur-sm space-y-4">
+              <div className="p-8 rounded-xl border border-gray-700/30 bg-gradient-to-br from-gray-400/10 to-gray-400/10 backdrop-blur-sm space-y-4">
                 <p className="text-lg text-foreground">
-                  We are raising a <strong className="text-teal-400">$5M seed round</strong> to:
+                  We are raising a <strong className="text-gray-300">$5M seed round</strong> to:
                 </p>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex gap-2">
-                    <span className="text-teal-400">•</span>
+                    <span className="text-gray-300">•</span>
                     Expand engineering team (Rust/Solana specialists)
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-teal-400">•</span>
+                    <span className="text-gray-300">•</span>
                     Deploy production mainnet infrastructure
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-teal-400">•</span>
+                    <span className="text-gray-300">•</span>
                     Onboard 10+ enterprise IoT partners
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-teal-400">•</span>
+                    <span className="text-gray-300">•</span>
                     Build developer ecosystem with grants and hackathons
                   </li>
                 </ul>
                 <div className="pt-4">
-                  <Button className="bg-gradient-to-r from-purple-600 to-teal-600 hover-elevate active-elevate-2" data-testid="button-contact-investors">
+                  <Button className="bg-gradient-to-r from-gray-500 to-gray-500 hover-elevate active-elevate-2" data-testid="button-contact-investors">
                     Contact: investors@x402pay.io
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
@@ -146,7 +146,7 @@ export default function ExecutiveSummary() {
           </div>
 
           <div className="space-y-6">
-            <Card className="border-purple-500/20 bg-purple-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">Transaction Fee</CardTitle>
               </CardHeader>
@@ -156,7 +156,7 @@ export default function ExecutiveSummary() {
               </CardContent>
             </Card>
             
-            <Card className="border-teal-500/20 bg-teal-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">Settlement Time</CardTitle>
               </CardHeader>
@@ -166,7 +166,7 @@ export default function ExecutiveSummary() {
               </CardContent>
             </Card>
             
-            <Card className="border-blue-500/20 bg-blue-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">Throughput</CardTitle>
               </CardHeader>
@@ -176,7 +176,7 @@ export default function ExecutiveSummary() {
               </CardContent>
             </Card>
             
-            <Card className="border-purple-500/20 bg-purple-500/5">
+            <Card className="border-gray-700/20 bg-gray-800/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">Year 3 Target</CardTitle>
               </CardHeader>
@@ -188,14 +188,14 @@ export default function ExecutiveSummary() {
           </div>
         </div>
 
-        <div className="flex justify-between pt-8 border-t border-purple-500/10">
+        <div className="flex justify-between pt-8 border-t border-gray-700/10">
           <Link href="/">
             <Button variant="ghost" className="hover-elevate" data-testid="button-back">
               ← Back to Home
             </Button>
           </Link>
           <Link href="/introduction">
-            <Button variant="ghost" className="text-purple-400 hover-elevate" data-testid="button-next">
+            <Button variant="ghost" className="text-gray-300 hover-elevate" data-testid="button-next">
               Next: Introduction
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
