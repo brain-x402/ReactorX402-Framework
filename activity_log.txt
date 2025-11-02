@@ -1,0 +1,4 @@
+echo Starting daily updates...  activity_log.txt
+git add .
+git commit -m Start daily tracking
+git push
