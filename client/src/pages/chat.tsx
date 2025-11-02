@@ -58,7 +58,12 @@ export default function ChatPage() {
   };
 
   useEffect(() => {
-    document.title = "AI Chat - BrainX";
+    document.title = "BrainX: Your Rebellious AI Brain";
+    document.body.classList.add("cosmic-theme");
+    
+    return () => {
+      document.body.classList.remove("cosmic-theme");
+    };
   }, []);
 
   useEffect(() => {
@@ -216,9 +221,9 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-background via-background to-background/95">
+    <div className="flex h-screen bg-gradient-to-br from-blue-950/20 via-black to-purple-950/10">
       {/* Sidebar - Desktop */}
-      <aside className={`hidden lg:flex flex-col w-80 border-r border-border/40 bg-background/60 backdrop-blur-xl`}>
+      <aside className={`hidden lg:flex flex-col w-80 border-r border-border/40 bg-black/60 backdrop-blur-xl`}>
         <div className="p-6 border-b border-border/40">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/90 to-white/70 flex items-center justify-center">
@@ -504,30 +509,79 @@ export default function ChatPage() {
         </header>
 
         {/* Messages Area */}
-        <main className="flex-1 overflow-hidden">
-          <div className="h-full flex flex-col">
+        <main className="flex-1 overflow-hidden relative">
+          {/* Cosmic starry background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-950/30 via-black to-purple-950/20 pointer-events-none" />
+          <div className="absolute inset-0 opacity-40 pointer-events-none"
+               style={{
+                 backgroundImage: `radial-gradient(2px 2px at 20% 30%, white, transparent),
+                                  radial-gradient(2px 2px at 60% 70%, white, transparent),
+                                  radial-gradient(1px 1px at 50% 50%, white, transparent),
+                                  radial-gradient(1px 1px at 80% 10%, white, transparent),
+                                  radial-gradient(2px 2px at 90% 60%, white, transparent),
+                                  radial-gradient(1px 1px at 33% 80%, white, transparent),
+                                  radial-gradient(1px 1px at 70% 40%, white, transparent)`,
+                 backgroundSize: '200% 200%',
+                 backgroundPosition: '0% 0%',
+               }}
+          />
+          <div className="h-full flex flex-col relative z-10">
             <div className="flex-1 overflow-y-auto pb-32" data-testid="chat-messages-container">
               <div className="mx-auto max-w-4xl px-4 md:px-6 py-6">
-                {messages.length === 0 ? (
+                {!connected || !isWalletValidated ? (
+                  <div className="flex flex-col items-center justify-center h-full min-h-[500px] space-y-8 text-center">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl rounded-full" />
+                      <div className="relative w-24 h-24 rounded-3xl bg-gradient-to-br from-blue-900/40 to-purple-900/40 flex items-center justify-center border border-white/10 backdrop-blur-sm">
+                        <Wallet className="w-12 h-12 text-white" />
+                      </div>
+                    </div>
+                    <div className="space-y-4 max-w-lg">
+                      <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+                        Connect Your Phantom Wallet
+                      </h2>
+                      <p className="text-white/70 text-base md:text-lg leading-relaxed">
+                        To interact with BrainX and earn <span className="text-white font-semibold">0.001 USDC</span> per message, you must first connect your Solana wallet.
+                      </p>
+                      <Card className="bg-blue-950/20 border-white/10 backdrop-blur-sm mt-6">
+                        <CardContent className="p-6 space-y-3">
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
+                            <p className="text-sm text-white/80 text-left">Connect your Phantom or Solana-compatible wallet</p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
+                            <p className="text-sm text-white/80 text-left">Chat with BrainX AI and earn USDC rewards</p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
+                            <p className="text-sm text-white/80 text-left">Instant payments on Solana blockchain</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      <div className="pt-4">
+                        <WalletButton />
+                      </div>
+                    </div>
+                  </div>
+                ) : messages.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-full min-h-[400px] space-y-6 text-center">
-                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-gray-400/20 to-gray-400/20 flex items-center justify-center border border-gray-600/20">
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center border border-white/10">
                       <MessageSquare className="w-10 h-10 text-white" />
                     </div>
                     <div className="space-y-3">
-                      <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
-                        Start a Conversation
+                      <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+                        Start Your Conversation with BrainX
                       </h2>
-                      <p className="text-muted-foreground max-w-md text-sm md:text-base">
-                        Connect your wallet and send a message to begin. {networkInfo && `You'll receive ${networkInfo.transferAmount} USDC for each interaction on ${networkInfo.network}.`}
+                      <p className="text-white/70 max-w-md text-sm md:text-base">
+                        Your wallet is connected. Send a message and receive {networkInfo && `${networkInfo.transferAmount} USDC for each interaction on ${networkInfo.network}.`}
                       </p>
-                      {connected && isWalletValidated && (
-                        <div className="pt-4">
-                          <Badge variant="outline" className="gap-2">
-                            <CheckCircle2 className="w-3 h-3 text-gray-400" />
-                            Wallet Connected
-                          </Badge>
-                        </div>
-                      )}
+                      <div className="pt-4">
+                        <Badge variant="outline" className="gap-2 border-blue-400/30 bg-blue-950/20">
+                          <CheckCircle2 className="w-3 h-3 text-blue-300" />
+                          <span className="text-white/90">Wallet Connected & Ready</span>
+                        </Badge>
+                      </div>
                     </div>
                   </div>
                 ) : (
