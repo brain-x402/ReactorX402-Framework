@@ -7,15 +7,15 @@ import { useEffect } from "react";
 
 export default function SDK() {
   useEffect(() => {
-    document.title = "SDK Documentation - x402Pay";
+    document.title = "SDK Documentation - BrainX";
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-purple-950/10 to-black">
+    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-900/50 to-black">
       <div className="max-w-6xl mx-auto px-8 py-24 space-y-16">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight" data-testid="text-page-title">
-            <span className="bg-gradient-to-r from-gray-300 to-gray-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
               SDK and Development Tools
             </span>
           </h1>
@@ -27,14 +27,14 @@ export default function SDK() {
         <section className="space-y-8" data-testid="section-overview">
           <h2 className="text-3xl font-bold text-foreground">Overview</h2>
           <p className="text-lg text-muted-foreground">
-            x402Pay provides enterprise-grade SDKs for rapid integration across hardware platforms and programming languages.
+            BrainX provides enterprise-grade SDKs for rapid integration across hardware platforms and programming languages.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
+            <Card className="border-white/10 bg-white/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Code2 className="w-5 h-5 text-gray-300" />
+                  <Code2 className="w-5 h-5 text-white" />
                   Python SDK
                 </CardTitle>
               </CardHeader>
@@ -51,10 +51,10 @@ export default function SDK() {
               </CardContent>
             </Card>
 
-            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
+            <Card className="border-white/10 bg-white/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Terminal className="w-5 h-5 text-gray-300" />
+                  <Terminal className="w-5 h-5 text-white" />
                   Rust SDK
                 </CardTitle>
               </CardHeader>
@@ -71,10 +71,10 @@ export default function SDK() {
               </CardContent>
             </Card>
 
-            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
+            <Card className="border-white/10 bg-white/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Book className="w-5 h-5 text-gray-300" />
+                  <Book className="w-5 h-5 text-white" />
                   JavaScript SDK
                 </CardTitle>
               </CardHeader>
@@ -104,7 +104,7 @@ export default function SDK() {
             </TabsList>
             
             <TabsContent value="python" className="mt-6 space-y-6">
-              <Card className="border-gray-700/20 bg-gray-800/5">
+              <Card className="border-white/10 bg-white/5">
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground">Installation</CardTitle>
                 </CardHeader>
@@ -115,7 +115,7 @@ export default function SDK() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-700/20 bg-gray-800/5">
+              <Card className="border-white/10 bg-white/5">
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground">Vending Machine Example</CardTitle>
                 </CardHeader>
@@ -166,7 +166,7 @@ async def handle_purchase(product_id: str, user_pubkey: str):
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-700/20 bg-gray-800/5">
+              <Card className="border-white/10 bg-white/5">
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground">Raspberry Pi GPIO Integration</CardTitle>
                 </CardHeader>
@@ -199,7 +199,7 @@ async def dispense_soda():
             </TabsContent>
             
             <TabsContent value="rust" className="mt-6 space-y-6">
-              <Card className="border-gray-700/20 bg-gray-800/5">
+              <Card className="border-white/10 bg-white/5">
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground">Installation</CardTitle>
                 </CardHeader>
@@ -213,7 +213,7 @@ tokio = { version = "1", features = ["full"] }`}
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-700/20 bg-gray-800/5">
+              <Card className="border-white/10 bg-white/5">
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground">IoT Sensor Example</CardTitle>
                 </CardHeader>
@@ -260,7 +260,7 @@ async fn main() -> Result<()> {
             </TabsContent>
             
             <TabsContent value="javascript" className="mt-6 space-y-6">
-              <Card className="border-gray-700/20 bg-gray-800/5">
+              <Card className="border-white/10 bg-white/5">
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground">Installation</CardTitle>
                 </CardHeader>
@@ -271,7 +271,7 @@ async fn main() -> Result<()> {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-700/20 bg-gray-800/5">
+              <Card className="border-white/10 bg-white/5">
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground">Smart Parking Meter Example</CardTitle>
                 </CardHeader>
@@ -322,10 +322,10 @@ async function chargeParkingFee(userWallet: string, hours: number) {
         <section className="space-y-8" data-testid="section-global-mesh">
           <h2 className="text-3xl font-bold text-foreground">Global Device Mesh</h2>
           <p className="text-lg text-muted-foreground">
-            x402Pay includes a <strong className="text-foreground">decentralized relay network</strong> for devices without static IPs:
+            BrainX includes a <strong className="text-foreground">decentralized relay network</strong> for devices without static IPs:
           </p>
           
-          <Card className="border-gray-700/20 bg-gray-800/5">
+          <Card className="border-white/10 bg-white/5">
             <CardContent className="p-6 space-y-4">
               <div className="flex items-start gap-4">
                 <div className="flex-1">
@@ -336,42 +336,42 @@ async function chargeParkingFee(userWallet: string, hours: number) {
                 </div>
               </div>
               
-              <div className="border-t border-gray-700/20 pt-4">
+              <div className="border-t border-white/10 pt-4">
                 <h3 className="font-semibold text-foreground mb-2">The Solution</h3>
                 <p className="text-muted-foreground mb-3">
-                  Devices connect to x402Pay relay nodes (similar to Helium's LoRaWAN architecture):
+                  Devices connect to BrainX relay nodes (similar to Helium's LoRaWAN architecture):
                 </p>
                 <pre className="text-sm text-muted-foreground font-mono p-4 rounded-lg bg-black/50">
 {`User Wallet → x402 Sol Program → Relay Node → NAT Traversal → IoT Device`}
                 </pre>
               </div>
               
-              <div className="border-t border-gray-700/20 pt-4">
+              <div className="border-t border-white/10 pt-4">
                 <h3 className="font-semibold text-foreground mb-3">Benefits</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex gap-2">
-                    <span className="text-gray-300">•</span>
+                    <span className="text-white">•</span>
                     <div>
                       <p className="text-sm font-medium text-foreground">Global Addressability</p>
                       <p className="text-xs text-muted-foreground">Devices accessible via DID regardless of location</p>
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <span className="text-gray-300">•</span>
+                    <span className="text-white">•</span>
                     <div>
                       <p className="text-sm font-medium text-foreground">Low Latency</p>
                       <p className="text-xs text-muted-foreground">150+ relay nodes worldwide (avg 50ms latency)</p>
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <span className="text-gray-300">•</span>
+                    <span className="text-white">•</span>
                     <div>
                       <p className="text-sm font-medium text-foreground">Censorship Resistance</p>
                       <p className="text-xs text-muted-foreground">No single entity controls relay network</p>
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <span className="text-gray-300">•</span>
+                    <span className="text-white">•</span>
                     <div>
                       <p className="text-sm font-medium text-foreground">Incentivized</p>
                       <p className="text-xs text-muted-foreground">Relay operators earn X402 fees (0.1% of transaction value)</p>
@@ -382,7 +382,7 @@ async function chargeParkingFee(userWallet: string, hours: number) {
             </CardContent>
           </Card>
 
-          <Card className="border-gray-700/20 bg-gray-800/5">
+          <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="text-lg text-foreground">SDK Auto-Configuration</CardTitle>
             </CardHeader>
@@ -406,7 +406,7 @@ async function chargeParkingFee(userWallet: string, hours: number) {
             </Button>
           </Link>
           <Link href="/tokenomics">
-            <Button variant="ghost" className="text-gray-300 hover-elevate" data-testid="button-next">
+            <Button variant="ghost" className="text-white hover-elevate" data-testid="button-next">
               Next: Tokenomics
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>

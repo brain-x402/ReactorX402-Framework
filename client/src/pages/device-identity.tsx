@@ -6,15 +6,15 @@ import { useEffect } from "react";
 
 export default function DeviceIdentity() {
   useEffect(() => {
-    document.title = "Device Identity - x402Pay";
+    document.title = "Device Identity - BrainX";
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-purple-950/10 to-black">
+    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-900/50 to-black">
       <div className="max-w-6xl mx-auto px-8 py-24 space-y-16">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight" data-testid="text-page-title">
-            <span className="bg-gradient-to-r from-gray-300 to-gray-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
               Device Identity and Trust Layer
             </span>
           </h1>
@@ -29,16 +29,16 @@ export default function DeviceIdentity() {
             Open payment systems face a critical challenge: <strong className="text-foreground">how to prevent malicious actors from flooding the network with fake devices</strong> to drain user funds or spam the network.
           </p>
           
-          <Card className="border-gray-700/20 bg-gray-800/5">
+          <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
-                <AlertTriangle className="w-5 h-5 text-gray-300" />
+                <AlertTriangle className="w-5 h-5 text-white" />
                 Traditional Solutions Fall Short
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                Traditional solutions (KYC, centralized approval) contradict decentralization principles. x402Pay solves this with an <strong className="text-foreground">on-chain device registry</strong> inspired by Ethereum's ERC-8004 standard, adapted for Solana's performance requirements.
+                Traditional solutions (KYC, centralized approval) contradict decentralization principles. BrainX solves this with an <strong className="text-foreground">on-chain device registry</strong> inspired by Ethereum's ERC-8004 standard, adapted for Solana's performance requirements.
               </p>
             </CardContent>
           </Card>
@@ -47,10 +47,10 @@ export default function DeviceIdentity() {
         <section className="space-y-8" data-testid="section-registry">
           <h2 className="text-3xl font-bold text-foreground">Solana Device Registry (SDR)</h2>
           <p className="text-lg text-muted-foreground">
-            Each IoT device in the x402Pay ecosystem must register on-chain before accepting payments:
+            Each IoT device in the BrainX ecosystem must register on-chain before accepting payments:
           </p>
           
-          <Card className="border-gray-700/20 bg-gray-800/5">
+          <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="text-lg text-foreground">Device Registry Data Structure</CardTitle>
             </CardHeader>
@@ -82,93 +82,93 @@ export default function DeviceIdentity() {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
+            <Card className="border-white/10 bg-white/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Shield className="w-5 h-5 text-gray-300" />
+                  <Shield className="w-5 h-5 text-white" />
                   Low-Value Sensor
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="flex items-baseline gap-2">
-                  <div className="text-3xl font-bold text-gray-300">100</div>
+                  <div className="text-3xl font-bold text-white">100</div>
                   <div className="text-sm text-muted-foreground">X402 minimum stake</div>
                 </div>
-                <p className="text-sm text-muted-foreground pt-2 border-t border-gray-700/20">
+                <p className="text-sm text-muted-foreground pt-2 border-t border-white/10">
                   <strong className="text-foreground">Slashing:</strong> 3 failed deliveries
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
+            <Card className="border-white/10 bg-white/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Shield className="w-5 h-5 text-gray-300" />
+                  <Shield className="w-5 h-5 text-white" />
                   Vending Machine
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="flex items-baseline gap-2">
-                  <div className="text-3xl font-bold text-gray-300">500</div>
+                  <div className="text-3xl font-bold text-white">500</div>
                   <div className="text-sm text-muted-foreground">X402 minimum stake</div>
                 </div>
-                <p className="text-sm text-muted-foreground pt-2 border-t border-gray-700/20">
+                <p className="text-sm text-muted-foreground pt-2 border-t border-white/10">
                   <strong className="text-foreground">Slashing:</strong> 5 failed deliveries or fraud proof
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
+            <Card className="border-white/10 bg-white/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Shield className="w-5 h-5 text-gray-300" />
+                  <Shield className="w-5 h-5 text-white" />
                   Autonomous Vehicle
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="flex items-baseline gap-2">
-                  <div className="text-3xl font-bold text-gray-300">2,000</div>
+                  <div className="text-3xl font-bold text-white">2,000</div>
                   <div className="text-sm text-muted-foreground">X402 minimum stake</div>
                 </div>
-                <p className="text-sm text-muted-foreground pt-2 border-t border-gray-700/20">
+                <p className="text-sm text-muted-foreground pt-2 border-t border-white/10">
                   <strong className="text-foreground">Slashing:</strong> Single safety incident
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
+            <Card className="border-white/10 bg-white/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Shield className="w-5 h-5 text-gray-300" />
+                  <Shield className="w-5 h-5 text-white" />
                   Industrial Equipment
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="flex items-baseline gap-2">
-                  <div className="text-3xl font-bold text-gray-300">5,000</div>
+                  <div className="text-3xl font-bold text-white">5,000</div>
                   <div className="text-sm text-muted-foreground">X402 minimum stake</div>
                 </div>
-                <p className="text-sm text-muted-foreground pt-2 border-t border-gray-700/20">
+                <p className="text-sm text-muted-foreground pt-2 border-t border-white/10">
                   <strong className="text-foreground">Slashing:</strong> SLA breach (99.9% uptime)
                 </p>
               </CardContent>
             </Card>
           </div>
 
-          <Card className="border-gray-700/20 bg-gray-800/5">
+          <Card className="border-white/10 bg-white/5">
             <CardContent className="p-6">
               <h3 className="font-semibold text-foreground mb-3">Slashing Mechanism</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex gap-2">
-                  <span className="text-gray-300">•</span>
+                  <span className="text-white">•</span>
                   <span>Failed transactions reduce stake by 10-50% depending on severity</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-gray-300">•</span>
+                  <span className="text-white">•</span>
                   <span>Slashed tokens distributed to affected users as compensation</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-gray-300">•</span>
+                  <span className="text-white">•</span>
                   <span>Devices below minimum stake threshold are automatically deactivated</span>
                 </li>
               </ul>
@@ -180,15 +180,15 @@ export default function DeviceIdentity() {
           <h2 className="text-3xl font-bold text-foreground">Reputation Scoring System</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="border-gray-700/20 bg-gray-800/5">
+            <Card className="border-white/10 bg-white/5">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Award className="w-4 h-4 text-gray-300" />
+                  <Award className="w-4 h-4 text-white" />
                   Elite
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
-                <div className="text-3xl font-bold text-gray-300">900-1000</div>
+                <div className="text-3xl font-bold text-white">900-1000</div>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>✓ Blue checkmark badge</li>
                   <li>✓ 50% stake reduction</li>
@@ -197,15 +197,15 @@ export default function DeviceIdentity() {
               </CardContent>
             </Card>
 
-            <Card className="border-gray-700/20 bg-gray-800/5">
+            <Card className="border-white/10 bg-white/5">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <CheckCircle2 className="w-4 h-4 text-gray-300" />
+                  <CheckCircle2 className="w-4 h-4 text-white" />
                   Trusted
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
-                <div className="text-3xl font-bold text-gray-300">700-899</div>
+                <div className="text-3xl font-bold text-white">700-899</div>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>✓ Green badge</li>
                   <li>✓ 25% stake reduction</li>
@@ -214,7 +214,7 @@ export default function DeviceIdentity() {
               </CardContent>
             </Card>
 
-            <Card className="border-gray-700/20 bg-gray-800/5">
+            <Card className="border-white/10 bg-white/5">
               <CardHeader>
                 <CardTitle className="text-sm text-muted-foreground">
                   Standard
@@ -230,15 +230,15 @@ export default function DeviceIdentity() {
               </CardContent>
             </Card>
 
-            <Card className="border-gray-700/20 bg-gray-800/5">
+            <Card className="border-white/10 bg-white/5">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <AlertTriangle className="w-4 h-4 text-gray-300" />
+                  <AlertTriangle className="w-4 h-4 text-white" />
                   High Risk
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
-                <div className="text-3xl font-bold text-gray-300">0-299</div>
+                <div className="text-3xl font-bold text-white">0-299</div>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>⚠ Red flag warning</li>
                   <li>⚠ Pre-approval for high-value tx</li>
@@ -248,7 +248,7 @@ export default function DeviceIdentity() {
             </Card>
           </div>
 
-          <Card className="border-gray-700/20 bg-gray-800/5">
+          <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="text-lg text-foreground">Reputation Score Formula</CardTitle>
             </CardHeader>
@@ -278,7 +278,7 @@ export default function DeviceIdentity() {
             Each device possesses a <strong className="text-foreground">Decentralized Identifier (DID)</strong> compliant with W3C standards:
           </p>
           
-          <Card className="border-gray-700/20 bg-gray-800/5">
+          <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="text-lg text-foreground">DID Document Example</CardTitle>
             </CardHeader>
@@ -316,7 +316,7 @@ export default function DeviceIdentity() {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
+            <Card className="border-white/10 bg-white/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="text-foreground">Metadata Encryption</CardTitle>
               </CardHeader>
@@ -327,7 +327,7 @@ export default function DeviceIdentity() {
               </CardContent>
             </Card>
 
-            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
+            <Card className="border-white/10 bg-white/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="text-foreground">Zero-Knowledge Proofs</CardTitle>
               </CardHeader>
@@ -338,7 +338,7 @@ export default function DeviceIdentity() {
               </CardContent>
             </Card>
 
-            <Card className="border-gray-700/20 bg-gray-800/5 hover-elevate">
+            <Card className="border-white/10 bg-white/5 hover-elevate">
               <CardHeader>
                 <CardTitle className="text-foreground">Aggregated Reporting</CardTitle>
               </CardHeader>
@@ -358,7 +358,7 @@ export default function DeviceIdentity() {
             </Button>
           </Link>
           <Link href="/sdk">
-            <Button variant="ghost" className="text-gray-300 hover-elevate" data-testid="button-next">
+            <Button variant="ghost" className="text-white hover-elevate" data-testid="button-next">
               Next: SDK & Dev Tools
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>

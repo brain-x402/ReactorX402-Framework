@@ -58,7 +58,7 @@ export default function ChatPage() {
   };
 
   useEffect(() => {
-    document.title = "AI Chat - x402Pay";
+    document.title = "AI Chat - BrainX";
   }, []);
 
   useEffect(() => {
@@ -221,7 +221,7 @@ export default function ChatPage() {
       <aside className={`hidden lg:flex flex-col w-80 border-r border-border/40 bg-background/60 backdrop-blur-xl`}>
         <div className="p-6 border-b border-border/40">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/90 to-white/70 flex items-center justify-center">
               <MessageSquare className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -343,7 +343,7 @@ export default function ChatPage() {
           <aside className="w-80 h-full bg-background border-r border-border/40" onClick={(e) => e.stopPropagation()}>
             <div className="p-6 border-b border-border/40 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/90 to-white/70 flex items-center justify-center">
                   <MessageSquare className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -511,7 +511,7 @@ export default function ChatPage() {
                 {messages.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-full min-h-[400px] space-y-6 text-center">
                     <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-gray-400/20 to-gray-400/20 flex items-center justify-center border border-gray-600/20">
-                      <MessageSquare className="w-10 h-10 text-gray-300" />
+                      <MessageSquare className="w-10 h-10 text-white" />
                     </div>
                     <div className="space-y-3">
                       <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-300 to-gray-400 bg-clip-text text-transparent">
@@ -573,7 +573,7 @@ export default function ChatPage() {
                     type="submit"
                     size="icon"
                     disabled={!inputMessage.trim() || !connected || !isWalletValidated || chatMutation.isPending}
-                    className="w-[52px] h-[52px] rounded-2xl flex-shrink-0 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 transition-all shadow-lg shadow-gray-700/25"
+                    className="w-[52px] h-[52px] rounded-2xl flex-shrink-0 bg-gradient-to-r from-white/90 to-white/70 hover:from-gray-700 hover:to-gray-800 transition-all shadow-lg shadow-gray-700/25"
                     data-testid="button-send-message"
                   >
                     {chatMutation.isPending ? (
@@ -651,7 +651,7 @@ function MessageBubble({ message, transaction }: { message: MessageWithTransacti
     <div className={`flex flex-col ${isUser ? 'items-end' : 'items-start'}`} data-testid={`message-${message.role}`}>
       {!isUser && (
         <div className="flex items-center gap-2 mb-2 ml-1">
-          <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center">
+          <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-white/90 to-white/70 flex items-center justify-center">
             <MessageSquare className="w-3.5 h-3.5 text-white" />
           </div>
           <span className="text-xs font-medium text-muted-foreground">AI Assistant</span>
@@ -662,7 +662,7 @@ function MessageBubble({ message, transaction }: { message: MessageWithTransacti
         <div
           className={`px-5 py-3.5 rounded-2xl shadow-sm ${
             isUser
-              ? 'bg-gradient-to-r from-gray-600 to-gray-700 text-white'
+              ? 'bg-gradient-to-r from-white/90 to-white/70 text-white'
               : 'bg-card/80 backdrop-blur border border-border/40'
           }`}
         >
@@ -718,7 +718,7 @@ function TransactionNotification({ transaction }: { transaction: Transaction }) 
               href={transaction.explorerUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-medium text-gray-300 hover:text-gray-200 flex items-center gap-1.5 flex-shrink-0 transition-colors"
+              className="text-xs font-medium text-white hover:text-gray-200 flex items-center gap-1.5 flex-shrink-0 transition-colors"
               data-testid="link-transaction-explorer"
             >
               View
@@ -735,7 +735,7 @@ function TypingIndicator() {
   return (
     <div className="flex items-start" data-testid="typing-indicator">
       <div className="flex items-center gap-2 mb-2">
-        <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center">
+        <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-white/90 to-white/70 flex items-center justify-center">
           <MessageSquare className="w-3.5 h-3.5 text-white" />
         </div>
         <span className="text-xs font-medium text-muted-foreground">AI Assistant</span>
