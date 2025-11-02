@@ -96,49 +96,49 @@
 }
 
 .dark {
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
+  --button-outline: rgba(255,255,255, .15);
+  --badge-outline: rgba(255,255,255, .08);
 
-  --opaque-button-border-intensity: 9;  /* In terms of percentages */
+  --opaque-button-border-intensity: 12;  /* In terms of percentages */
 
   /* Backgrounds applied on top of other backgrounds when hovered/active */
-  --elevate-1: rgba(255,255,255, .04);
-  --elevate-2: rgba(255,255,255, .09);
+  --elevate-1: rgba(255,255,255, .06);
+  --elevate-2: rgba(255,255,255, .12);
 
-  --background: 0 0% 4%;
-  --foreground: 0 0% 95%;
-  --border: 0 0% 15%;
-  --card: 0 0% 6%;
-  --card-foreground: 0 0% 95%;
-  --card-border: 0 0% 12%;
-  --sidebar: 0 0% 8%;
-  --sidebar-foreground: 0 0% 95%;
-  --sidebar-border: 0 0% 14%;
-  --sidebar-primary: 0 0% 75%;
-  --sidebar-primary-foreground: 0 0% 10%;
-  --sidebar-accent: 0 0% 15%;
-  --sidebar-accent-foreground: 0 0% 90%;
-  --sidebar-ring: 0 0% 70%;
-  --popover: 0 0% 10%;
-  --popover-foreground: 0 0% 95%;
-  --popover-border: 0 0% 16%;
-  --primary: 0 0% 70%;
-  --primary-foreground: 0 0% 10%;
-  --secondary: 0 0% 14%;
-  --secondary-foreground: 0 0% 95%;
-  --muted: 0 0% 14%;
-  --muted-foreground: 0 0% 60%;
-  --accent: 0 0% 16%;
-  --accent-foreground: 0 0% 90%;
-  --destructive: 0 0% 45%;
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --card: 0 0% 8%;
+  --card-foreground: 0 0% 100%;
+  --card-border: 0 0% 18%;
+  --sidebar: 0 0% 5%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-border: 0 0% 18%;
+  --sidebar-primary: 0 0% 85%;
+  --sidebar-primary-foreground: 0 0% 0%;
+  --sidebar-accent: 0 0% 18%;
+  --sidebar-accent-foreground: 0 0% 95%;
+  --sidebar-ring: 0 0% 80%;
+  --popover: 0 0% 8%;
+  --popover-foreground: 0 0% 100%;
+  --popover-border: 0 0% 20%;
+  --primary: 0 0% 85%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 18%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 18%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 95%;
+  --destructive: 0 0% 50%;
   --destructive-foreground: 0 0% 100%;
-  --input: 0 0% 25%;
-  --ring: 0 0% 65%;
-  --chart-1: 0 0% 70%;
-  --chart-2: 0 0% 65%;
-  --chart-3: 0 0% 60%;
-  --chart-4: 0 0% 55%;
-  --chart-5: 0 0% 50%;
+  --input: 0 0% 30%;
+  --ring: 0 0% 75%;
+  --chart-1: 0 0% 80%;
+  --chart-2: 0 0% 75%;
+  --chart-3: 0 0% 70%;
+  --chart-4: 0 0% 65%;
+  --chart-5: 0 0% 60%;
 
   --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.3);
   --shadow-xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.4);
